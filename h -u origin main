@@ -1,5 +1,0 @@
-[33mcommit e56caaa6fa0e8cc085a69e9fe91392c260fc0f42[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
-Author: Veronika <v.kurhajcova@gmail.com>
-Date:   Fri Jul 4 10:10:30 2025 +0200
-
-    Initial commit - Base class with config and WebDriver setup
