@@ -3,6 +3,8 @@ package demowebshop.base;
 import java.io.IOException;
 import java.time.Duration;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -15,12 +17,15 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class BaseTest {
 
 	private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    protected static final Logger log = LogManager.getLogger(BaseTest.class);
     private PropertiesReader reader;
+    protected PropertiesReader testDataReader;
 
 	
 	 public BaseTest() {
 	        try {
-	            reader = new PropertiesReader("src/test/resources/config.properties");
+	            reader = new PropertiesReader("src/test/resources/config/config.properties");
+	            testDataReader = new PropertiesReader("src/test/resources/testdata/validUser.properties");
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	            throw new RuntimeException("Config.properties file not found or could not be loaded", e);

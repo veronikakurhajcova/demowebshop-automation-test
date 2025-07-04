@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-07-04T20:07:14 SELČ" name="Suite" finished-at="2025-07-04T20:07:19 SELČ" duration-ms="5047">
+    <groups>
+    </groups>
+    <test started-at="2025-07-04T20:07:14 SELČ" name="Test" finished-at="2025-07-04T20:07:19 SELČ" duration-ms="5047">
+      <class name="tests.RegisterValidTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.RegisterValidTest@1cdc4c27]" started-at="2025-07-04T20:07:14 SELČ" name="setUp" finished-at="2025-07-04T20:07:17 SELČ" duration-ms="2631" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testValidRegistration()[pri:0, instance:tests.RegisterValidTest@1cdc4c27]" started-at="2025-07-04T20:07:17 SELČ" name="testValidRegistration" description="Valid user registration with correct data" finished-at="2025-07-04T20:07:19 SELČ" duration-ms="2264" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testValidRegistration -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.RegisterValidTest@1cdc4c27]" started-at="2025-07-04T20:07:19 SELČ" name="tearDown" finished-at="2025-07-04T20:07:19 SELČ" duration-ms="122" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.RegisterValidTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

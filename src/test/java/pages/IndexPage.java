@@ -19,6 +19,6 @@ public class IndexPage extends BasePage {
     public void clickRegisterLink() {
         click(registerLink);
     }
-	
+    
 
 }

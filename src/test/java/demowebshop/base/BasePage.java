@@ -45,8 +45,12 @@ public class BasePage extends BaseTest {
 		element.sendKeys(text);
 	}
 
-	public void waitForElementToBeVisible(WebElement element, int timeoutInSeconds) {
+	public void waitForElementToBeVisible(WebElement element) {
 		wait.until(ExpectedConditions.visibilityOf(element));
+	}
+	
+	public void waitForElementToBeClickable(WebElement element) {
+		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 
 	public void scrollToElement(WebElement element) {
