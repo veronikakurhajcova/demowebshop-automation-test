@@ -12,13 +12,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import demowebshop.utils.PropertiesReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Base {
+public class BaseTest {
 
 	private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     private PropertiesReader reader;
 
 	
-	 public Base() {
+	 public BaseTest() {
 	        try {
 	            reader = new PropertiesReader("src/test/resources/config.properties");
 	        } catch (IOException e) {
@@ -27,7 +27,7 @@ public class Base {
 	        }
 	    }
 
-	public WebDriver getDriver() {
+	public static WebDriver getDriver() {
 		return driver.get();
 	}
 

@@ -1,0 +1,10 @@
+demowebshop-automation/
+/target/
+.settings/
+.project
+.classpath
+.idea/
+*.iml
+.vscode/
+*.log
+*.tmp
