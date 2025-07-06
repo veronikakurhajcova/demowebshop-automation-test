@@ -37,12 +37,16 @@ public class RegisterPage extends BasePage {
 	@FindBy(xpath="//div[@class='result']")
 	private WebElement registrationResultMessage;
 	
+	@FindBy(xpath="(//a[@href='customer/info'])[1]")
+	private WebElement registeredCustomerInfo;
+	
 	@FindBy(css="input[value='Continue']")
 	public WebElement continueButton;
 	
 	
 	// Actions
 	public void registerUser(String firstName, String lastName, String email, String password) {
+		
 		waitForElementToBeVisible(firstNameInput);
 		waitForElementToBeClickable(femaleRadioButton);
 		click(femaleRadioButton);
@@ -55,13 +59,32 @@ public class RegisterPage extends BasePage {
 	}
 	
 	public String getResultMessage() {
+		
 		waitForElementToBeVisible(registrationResultMessage);
 		return registrationResultMessage.getText();
 	}
 	
 	public void clickContinue() {
+		
 		waitForElementToBeClickable(continueButton);
 		click(continueButton);
+	}
+	
+	public boolean isRegisteredCustomerInfoDisplayed() {
+		
+		try {
+			waitForElementToBeVisible(registeredCustomerInfo);
+			return registeredCustomerInfo.isDisplayed();
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	public String getRegisteredCustomerInfo() {
+		
+		waitForElementToBeVisible(registeredCustomerInfo);
+		String actualUsername = registeredCustomerInfo.getText().trim();
+		return actualUsername;
 	}
 	
 }

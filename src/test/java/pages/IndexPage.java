@@ -11,14 +11,31 @@ public class IndexPage extends BasePage {
 		super();
 	}
 
-	//Elements
+	// Elements
     @FindBy(xpath = "//a[@class='ico-register']")
     private WebElement registerLink;
+    
+    @FindBy(xpath="//a[@href='/login']")
+    private WebElement loginLink;
 
-    //Actions
+    // Actions
+    // Register
     public void clickRegisterLink() {
+    	
         click(registerLink);
     }
+    
+    // Login
+    public void clickLoginLink() {
+		
+		click(loginLink);
+	}
+    
+    
+    public String getCurrentUrl() {
+		
+		return getCurrentUrl();
+	}
     
 
 }

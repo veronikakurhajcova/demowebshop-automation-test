@@ -18,14 +18,16 @@ public class BaseTest {
 
 	private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     protected static final Logger log = LogManager.getLogger(BaseTest.class);
-    private PropertiesReader reader;
+    protected PropertiesReader configReader;
     protected PropertiesReader testDataReader;
+    protected PropertiesReader dashboardReader;
 
 	
 	 public BaseTest() {
 	        try {
-	            reader = new PropertiesReader("src/test/resources/config/config.properties");
+	            configReader = new PropertiesReader("src/test/resources/config/config.properties");
 	            testDataReader = new PropertiesReader("src/test/resources/testdata/validUser.properties");
+	            dashboardReader = new PropertiesReader("src/test/resources/testdata/dashboard.properties");
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	            throw new RuntimeException("Config.properties file not found or could not be loaded", e);
@@ -38,8 +40,8 @@ public class BaseTest {
 
 	// Initialize the WebDriver instance
 	public WebDriver initializeBrowser() {
-		String browser = reader.getProperty("browser");
-		String url = reader.getProperty("url");
+		String browser = configReader.getProperty("browser");
+		String url = configReader.getProperty("url");
 		
 			//Set up ChromeDriver 
 		if (browser.equalsIgnoreCase("chrome")) {

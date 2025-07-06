@@ -1,64 +1,107 @@
 package tests;
 
+import java.io.IOException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import demowebshop.base.BaseTest;
+import demowebshop.utils.PropertiesReader;
+import utils.RetryAnalyzer;
+import pages.DashboardPage;
 import pages.IndexPage;
 import pages.RegisterPage;
 
 public class RegisterValidTest extends BaseTest {
-	
+
 	private static final Logger log = LogManager.getLogger(RegisterValidTest.class);
 
 	IndexPage indexPage;
 	RegisterPage registerPage;
+	DashboardPage dashboardPage;
 
 	public RegisterValidTest() {
+		
 		super();
+		try {
+			testDataReader = new PropertiesReader("src/test/resources/testdata/validUser.properties");
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new RuntimeException("validUser.properties file not found or could not be loaded", e);
+		}
 	}
-	
+
 	@BeforeMethod
 	public void setUp() {
+		
 		// Initialize the browser and navigate to the URL
 		log.info("Initializing browser and navigating to the URL.");
 		initializeBrowser();
 		indexPage = new IndexPage();
 		registerPage = new RegisterPage();
+		dashboardPage = new DashboardPage();
 	}
 
-	@Test(description = "Valid user registration with correct data")
+	@Test(description = "Valid user registration with correct data", retryAnalyzer = RetryAnalyzer.class)
 	public void testValidRegistration() {
-		
+
 		log.info("Starting valid user registration test.");
 		indexPage.clickRegisterLink();
-		
+
 		log.info("Filling in registration form with valid data.");
-		registerPage.registerUser(
-			testDataReader.getProperty("valid.firstname"),
-			testDataReader.getProperty("valid.lastname"),
-			testDataReader.getProperty("valid.email"),
-			testDataReader.getProperty("valid.password")
-		);
-		
+		registerPage.registerUser(testDataReader.getProperty("valid.firstname"),
+				testDataReader.getProperty("valid.lastname"), testDataReader.getProperty("valid.email"),
+				testDataReader.getProperty("valid.password"));
+
 		log.info("Verifying registration result message and URL.");
 		String actualMessage = registerPage.getResultMessage();
-		Assert.assertEquals(actualMessage, "Your registration completed", "Registration message does not match expected.");
-		Assert.assertTrue(getDriver().getCurrentUrl().contains("registerresult"), "URL does not contain 'registerresult' after registration.");
+		Assert.assertEquals(actualMessage, "Your registration completed",
+				"Registration message does not match expected.");
+		
+		Assert.assertTrue(getDriver().getCurrentUrl().contains("registerresult"),
+				"URL does not contain 'registerresult' after registration.");
+		
+		Assert.assertTrue(registerPage.isRegisteredCustomerInfoDisplayed(),
+				"Registered customer info is not displayed.");
+		
+		Assert.assertEquals(registerPage.getRegisteredCustomerInfo(), testDataReader.getProperty("valid.email"),
+				"Registered customer info does not match expected.");
+		
+		log.info("Registration completed successfully with expected data.");
 		
 		log.info("Clicking continue button to finish registration.");
 		registerPage.clickContinue();
-	}
-	
-	@AfterMethod
-	public void tearDown() {
-		log.info("Closing the browser after test completion.");
-	    quitDriver();
+		
+		Assert.assertEquals(dashboardPage.getDashboardUrl(), dashboardReader.getProperty("dashboard.url"),
+				"Dashboard url after registration does not match expected.");
 	}
 
+	@AfterMethod
+	public void logout() {
+		
+		// logout user after registration
+		
+		 try {
+		        dashboardPage.clickLogoutButton();
+		        log.info("User logged out successfully.");
+		        
+		        Assert.assertEquals(indexPage.getCurrentUrl(), configReader.getProperty("url"), 
+		                "URL after logout does not match the base URL.");
+		    } catch (Exception e) {
+		        log.warn("Logout was not possible, možno už nie je prihlásený alebo chyba na stránke. Detail: " + e.getMessage());
+		    }
+	}
+	
+	@AfterTest
+	public void tearDown() {
+		
+		log.info("Closing the browser after test completion.");
+		quitDriver();
+	}
 
 }

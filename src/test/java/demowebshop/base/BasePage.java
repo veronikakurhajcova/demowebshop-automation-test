@@ -12,7 +12,7 @@ public class BasePage extends BaseTest {
 	WebDriver driver;
 	private WebDriverWait wait;
 
-	// This can be used to initialize common actions for all pages
+	// Initialize common actions for all pages
 	public BasePage() {
 		this.driver = BaseTest.getDriver();
 		PageFactory.initElements(driver, this);
