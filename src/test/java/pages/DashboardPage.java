@@ -16,11 +16,20 @@ public class DashboardPage extends BasePage {
 	@FindBy(xpath = "//a[@href=\"/logout\" ]")
 	private WebElement logoutButton;
 	
+	@FindBy(xpath = "(//a[@href='/customer/info'])[1]")
+	private WebElement customerInfoLink;
+	
 	//Actions
 	
 	public String getDashboardUrl() {
 		
 		return getCurrentUrl();
+	}
+	
+	public String getLoggedCustomerInfo() {
+		
+		return customerInfoLink.getText().trim();
+		
 	}
 	
 	public void clickLogoutButton() {

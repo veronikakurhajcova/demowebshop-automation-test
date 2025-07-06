@@ -37,7 +37,7 @@ public class RegisterPage extends BasePage {
 	@FindBy(xpath="//div[@class='result']")
 	private WebElement registrationResultMessage;
 	
-	@FindBy(xpath="(//a[@href='customer/info'])[1]")
+	@FindBy(xpath="(//a[@href='/customer/info'])[1]")
 	private WebElement registeredCustomerInfo;
 	
 	@FindBy(css="input[value='Continue']")

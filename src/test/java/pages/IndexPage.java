@@ -32,10 +32,10 @@ public class IndexPage extends BasePage {
 	}
     
     
-    public String getCurrentUrl() {
-		
-		return getCurrentUrl();
-	}
+//    public String getCurrentUrl() {
+//		
+//		return super.getCurrentUrl();
+//	}
     
 
 }

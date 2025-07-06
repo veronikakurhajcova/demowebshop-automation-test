@@ -2,8 +2,6 @@ package tests;
 
 import java.io.IOException;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -12,14 +10,12 @@ import org.testng.annotations.Test;
 
 import demowebshop.base.BaseTest;
 import demowebshop.utils.PropertiesReader;
-import utils.RetryAnalyzer;
 import pages.DashboardPage;
 import pages.IndexPage;
 import pages.RegisterPage;
+import utils.RetryAnalyzer;
 
 public class RegisterValidTest extends BaseTest {
-
-	private static final Logger log = LogManager.getLogger(RegisterValidTest.class);
 
 	IndexPage indexPage;
 	RegisterPage registerPage;
@@ -37,7 +33,7 @@ public class RegisterValidTest extends BaseTest {
 	}
 
 	@BeforeMethod
-	public void setUp() {
+	public void setup() {
 		
 		// Initialize the browser and navigate to the URL
 		log.info("Initializing browser and navigating to the URL.");

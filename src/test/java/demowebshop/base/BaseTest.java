@@ -28,6 +28,7 @@ public class BaseTest {
 	            configReader = new PropertiesReader("src/test/resources/config/config.properties");
 	            testDataReader = new PropertiesReader("src/test/resources/testdata/validUser.properties");
 	            dashboardReader = new PropertiesReader("src/test/resources/testdata/dashboard.properties");
+	            log.info("Properties files loaded successfully.");
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	            throw new RuntimeException("Config.properties file not found or could not be loaded", e);
