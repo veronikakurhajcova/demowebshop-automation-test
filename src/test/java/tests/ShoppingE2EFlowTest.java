@@ -110,6 +110,9 @@ public class ShoppingE2EFlowTest extends BaseTest {
 
 		Assert.assertEquals(shoppingCartPage.getCheckoutCurrentUrl(), cartReader.getProperty("cart.expected.url"),
 				"Checkout URL does not match");
+		
+		//billing Address
+		
 	}
 
 	@AfterTest
