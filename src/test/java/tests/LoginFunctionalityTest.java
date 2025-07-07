@@ -66,7 +66,7 @@ public class LoginFunctionalityTest extends BaseTest {
 			Assert.assertEquals(indexPage.getCurrentUrl(), dashboardReader.getProperty("dashboard.url"),
 					"URL after logout does not match the base URL.");
 		} catch (Exception e) {
-			log.warn("Logout was not possible, možno už nie je prihlásený alebo chyba na stránke. Detail: "
+			log.warn("Logout was not possible"
 					+ e.getMessage());
 		}
 	}
