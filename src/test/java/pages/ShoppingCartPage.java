@@ -50,6 +50,9 @@ public class ShoppingCartPage extends BasePage {
 	private WebElement shippingResultsSummary;
 
 	// Total Shopping cart summary elements
+	
+	@FindBy(xpath="//table[@class='cart-total']")
+	private WebElement totalInfoTableInShoppingCartSummary;
 
 	@FindBy(xpath = "//tr[td/span[contains(text(),'Sub-Total:')]]/td[@class='cart-total-right']//span[@class='product-price']")
 	private WebElement productSubtotalInShoppingCartSummary;
@@ -78,28 +81,28 @@ public class ShoppingCartPage extends BasePage {
 
 	}
 
-	public boolean getImageOfProductInShoppingCart() {
+	public boolean isProductImageDisplayed() {
 
 		return imageOfProduct.isDisplayed();
-		
+
 	}
 
 	public String getNameOfProductInShoppingCart() {
 
 		return nameOfProductInShoppingCart.getText();
-		
+
 	}
 
 	public double getPriceInShoppingCart() {
 
-		return parsePrice(productUnitPriceInShoppingCartInformation.getText());	
-		
+		return parsePrice(productUnitPriceInShoppingCartInformation.getText());
+
 	}
 
 	public double getQuantityInShoppingCart() {
 
 		return parsePrice(quantityInputInShoppingCartInformation.getAttribute("value"));
-		
+
 	}
 
 	public double getProductSubtotalInShoppingCartInformation() {
@@ -110,21 +113,19 @@ public class ShoppingCartPage extends BasePage {
 
 	// Estimate shipping methods
 
-	public boolean expectedShoppingCartSummary(String expectedName, double expectedPrice, double expectedQuantity,
-			double expectedTotalPriceForProduct) {
-
-		return getImageOfProductInShoppingCart() && getNameOfProductInShoppingCart().equals(expectedName)
-				&& getPriceInShoppingCart() == expectedPrice && getQuantityInShoppingCart() == expectedQuantity
-				&& getProductSubtotalInShoppingCartInformation() == expectedTotalPriceForProduct;
-
-	}
-
 	public void selectCountry(String nameOfCountry) {
 
+		waitForElementToBeClickable(countrySelect);
 		Select select = new Select(countrySelect);
 		select.selectByVisibleText(nameOfCountry);
 
 	}
+	
+	public boolean selectedCountryIsDisplayed(String expectedCountry) {
+	    Select select = new Select(countrySelect);
+	    return select.getFirstSelectedOption().getText().equals(expectedCountry);
+	}
+
 
 	public void selectStateOrProvince(String nameOfStateOrProvince) {
 
@@ -132,17 +133,25 @@ public class ShoppingCartPage extends BasePage {
 		select.selectByVisibleText(nameOfStateOrProvince);
 
 	}
-
-	public void fillAndSubmitShippingEstimateForm(String country) {
-
-		waitForElementToBeClickable(countrySelect);
-		selectCountry(country);
+	
+	public void clickEstimateShippingButton() {
+		
 		click(estimateShippingButton);
-		Assert.assertTrue(shippingResultsSummary.isDisplayed(), "Shipping results summary does not displayed");
-
+		
+	}
+	
+	public boolean shippingResultsSummaryIsDisplayed() {
+		
+		return shippingResultsSummary.isDisplayed();
+		
 	}
 
 	// Totals summary methods
+	
+	public boolean totalInfoSummaryInShoppingCartIsDisplayed() {
+		
+		return totalInfoTableInShoppingCartSummary.isDisplayed();
+	}
 
 	public double getSubtotalPriceInShoppingCartSummary() {
 
@@ -167,22 +176,24 @@ public class ShoppingCartPage extends BasePage {
 		return parsePrice(totalPriceInShoppingCartSummary.getText());
 
 	}
+	
+	public void clickTermsOfService() {
+		
+		waitForElementToBeClickable(termOfServiceCheckbox);
+		click(termOfServiceCheckbox);
+		
+	}
 
-	public boolean checkInformationInShoppingCartTotalSummary(double expectedSubtotalPrice,
-			double expectedShippingPrice, double expectedTax, double expectedTotal) {
 
-		return getSubtotalPriceInShoppingCartSummary() == expectedSubtotalPrice
-				&& getShippingPriceInShoppingCartSummary() == expectedShippingPrice
-				&& getTaxInShoppingCartSummary() == expectedTax
-				&& getTotalPriceInShoppingCartSummary() == expectedTotal;
+	public void submitOrder() {
+
+		click(checkoutButton);
 
 	}
 	
-	public void submitOrder() {
-		
-		click(termOfServiceCheckbox);
-		click(checkoutButton);
-		
+	public String getCheckoutCurrentUrl() {
+
+		return super.getCurrentUrl();
 	}
 
 }

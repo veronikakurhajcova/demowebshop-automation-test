@@ -22,6 +22,7 @@ public class BaseTest {
     protected PropertiesReader testDataReader;
     protected PropertiesReader dashboardReader;
     protected PropertiesReader booksReader;
+    protected PropertiesReader cartReader;
 
 	
 	 public BaseTest() {
@@ -29,6 +30,7 @@ public class BaseTest {
 	            configReader = new PropertiesReader("src/test/resources/config/config.properties");
 	            testDataReader = new PropertiesReader("src/test/resources/testdata/validUser.properties");
 	            dashboardReader = new PropertiesReader("src/test/resources/testdata/dashboard.properties");
+	            cartReader = new PropertiesReader("src/test/resources/testdata/dashboard.properties");
 	            booksReader = new PropertiesReader("src/test/resources/testdata/message.properties");
 	            log.info("Properties files loaded successfully.");
 	        } catch (IOException e) {
