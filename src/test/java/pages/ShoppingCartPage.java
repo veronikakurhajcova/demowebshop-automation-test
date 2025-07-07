@@ -3,11 +3,12 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 
 import demowebshop.base.BasePage;
 
 public class ShoppingCartPage extends BasePage {
+	
+	DashboardPage dashboardPage = new DashboardPage();
 
 	public ShoppingCartPage() {
 
@@ -71,6 +72,13 @@ public class ShoppingCartPage extends BasePage {
 
 	@FindBy(id = "checkout")
 	private WebElement checkoutButton;
+	
+	// Clean cart
+	@FindBy(xpath="//input[@name='removefromcart']")
+	private WebElement removeProductFromCartCheckbox;
+	
+	@FindBy(xpath="//input[@name='updatecart']")
+	private WebElement updateShoppingCartButton;
 
 	// Actions
 	// Shopping cart informations methods
@@ -114,7 +122,7 @@ public class ShoppingCartPage extends BasePage {
 	// Estimate shipping methods
 
 	public void selectCountry(String nameOfCountry) {
-
+		waitForElementToBeVisible(countrySelect);
 		waitForElementToBeClickable(countrySelect);
 		Select select = new Select(countrySelect);
 		select.selectByVisibleText(nameOfCountry);
@@ -194,6 +202,25 @@ public class ShoppingCartPage extends BasePage {
 	public String getCheckoutCurrentUrl() {
 
 		return super.getCurrentUrl();
+		
 	}
+	
+	// Clean cart method
+	public void clearShoppingCart() {
+	    if (isElementPresent(removeProductFromCartCheckbox)) {
+	        if (!removeProductFromCartCheckbox.isSelected()) {
+	            waitForElementToBeClickable(removeProductFromCartCheckbox);
+	            click(removeProductFromCartCheckbox);
+	            waitForElementToBeClickable(updateShoppingCartButton);
+	            click(updateShoppingCartButton);
+	        } else {
+	            waitForElementToBeClickable(updateShoppingCartButton);
+	            click(updateShoppingCartButton);
+	        }
+	    }
+	    
+	    navigateTo(dashboardPage.getDashboardUrl());
+	}
+
 
 }

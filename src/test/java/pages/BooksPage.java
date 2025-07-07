@@ -26,17 +26,20 @@ public class BooksPage extends BasePage {
 
 		String currentUrl = getCurrentUrl();
 		return currentUrl.contains("/books");
+		
 	}
 
 	public void verifyOnBooksPage() {
 
 		Assert.assertTrue(isOnBooksPage(), "Url does not match book url");
+		
 	}
 
 	public void addBookWithId13ToCart() {
 
 		waitForElementToBeClickable(addToCartButtonForProduct13);
 		click(addToCartButtonForProduct13);
+		
 	}
 
 	public String getSuccessBarNotificationAfterAddProductToCartText() {
@@ -49,6 +52,7 @@ public class BooksPage extends BasePage {
 	    waitForElementToBeVisible(successBarNotification);
 	    String actualMessage = getSuccessBarNotificationAfterAddProductToCartText();
 	    Assert.assertTrue(actualMessage.contains(expectedMessage), "Text of success notification bar does not match!");
+	    
 	}
 	
 	

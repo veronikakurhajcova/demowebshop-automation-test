@@ -45,11 +45,13 @@ public class HeaderPage extends BasePage {
 
 		String quantityText = cartQuantity.getText();
 		return Integer.parseInt(quantityText.replaceAll("[^0-9]", ""));
+		
 	}
 	
 	public void clickOnShoppingCartLink() {
 		waitForElementToBeClickable(shoppingCartLink);
-		clickOnShoppingCartLink();
+		click(shoppingCartLink);
+		
 	}
 
 }

@@ -56,18 +56,21 @@ public class RegisterPage extends BasePage {
 		sendKeys(passwordInput, password);
 		sendKeys(confirmPasswordInput, password);
 		click(registerButton);
+		
 	}
 	
 	public String getResultMessage() {
 		
 		waitForElementToBeVisible(registrationResultMessage);
 		return registrationResultMessage.getText();
+		
 	}
 	
 	public void clickContinue() {
 		
 		waitForElementToBeClickable(continueButton);
 		click(continueButton);
+		
 	}
 	
 	public boolean isRegisteredCustomerInfoDisplayed() {
@@ -85,6 +88,7 @@ public class RegisterPage extends BasePage {
 		waitForElementToBeVisible(registeredCustomerInfo);
 		String actualUsername = registeredCustomerInfo.getText().trim();
 		return actualUsername;
+		
 	}
 	
 }

@@ -3,20 +3,13 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="tests.AddProductToCartTest">
+      <class name="tests.CheckoutTests">
         <methods>
-          <include name="addOneProductToCart_ValidProduct"/>
-          <include name="setup"/>
-        </methods>
-      </class> <!-- tests.AddProductToCartTest -->
-      <class name="tests.RegisterValidTest">
-        <methods>
-          <include name="logout"/>
-          <include name="testValidRegistration"/>
-          <include name="setup"/>
           <include name="tearDown"/>
+          <include name="shoppingE2EFlow"/>
+          <include name="setup"/>
         </methods>
-      </class> <!-- tests.RegisterValidTest -->
+      </class> <!-- tests.CheckoutTests -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

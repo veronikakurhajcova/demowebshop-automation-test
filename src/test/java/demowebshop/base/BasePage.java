@@ -2,6 +2,7 @@ package demowebshop.base;
 
 import java.time.Duration;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -49,6 +50,15 @@ public class BasePage extends BaseTest {
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 	
+	public boolean isElementPresent(WebElement element) {
+	    try {
+	        wait.until(ExpectedConditions.visibilityOf(element));
+	        return true; 
+	    } catch (TimeoutException e) {
+	        return false; 
+	    }
+	}
+
 	public void waitForElementToBeClickable(WebElement element) {
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}

@@ -3,14 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.LoginValidTest">
+      <class name="tests.CheckoutTests">
         <methods>
-          <include name="logoutLoggedUser"/>
-          <include name="testValidLogin"/>
           <include name="tearDown"/>
+          <include name="shoppingE2EFlow"/>
           <include name="setup"/>
         </methods>
-      </class> <!-- tests.LoginValidTest -->
+      </class> <!-- tests.CheckoutTests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

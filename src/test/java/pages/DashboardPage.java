@@ -37,14 +37,17 @@ public class DashboardPage extends BasePage {
 	
 	// Shopping flow
 	public void clickOnBooksLink() {
+		
 		waitForElementToBeClickable(booksLink);
 		click(booksLink);
+		
 	}
 	
 	public void clickLogoutButton() {
 		
 		waitForElementToBeClickable(logoutButton);
 		click(logoutButton);
+		
 	}
 
 }

@@ -1,6 +1,7 @@
 package tests;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -55,6 +56,16 @@ public class AddProductToCartTest extends BaseTest {
 		log.info("Verify quantity in cart");
 		int quantity = headerPage.getCartQuantity();
 		Assert.assertEquals(quantity, 1, "In cart is not expected number of products");
+		
 	}
+	
+	@AfterTest
+	public void tearDown() {
+
+		log.info("Closing the browser after logout completion.");
+		quitDriver();
+		
+	}
+
 
 }

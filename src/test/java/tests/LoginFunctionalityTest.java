@@ -13,14 +13,14 @@ import pages.IndexPage;
 import pages.LoginPage;
 import utils.RetryAnalyzer;
 
-public class LoginValidTest extends BaseTest {
+public class LoginFunctionalityTest extends BaseTest {
 
 	IndexPage indexPage;
 	HeaderPage headerPage;
 	LoginPage loginPage;
 	DashboardPage dashboardPage;
 
-	public LoginValidTest() {
+	public LoginFunctionalityTest() {
 
 		super();
 
@@ -76,6 +76,7 @@ public class LoginValidTest extends BaseTest {
 
 		log.info("Closing the browser after logout completion.");
 		quitDriver();
+		
 	}
 
 }
