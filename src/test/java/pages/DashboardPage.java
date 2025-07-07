@@ -19,6 +19,9 @@ public class DashboardPage extends BasePage {
 	@FindBy(xpath = "(//a[@href='/customer/info'])[1]")
 	private WebElement customerInfoLink;
 	
+	@FindBy(css = "a[href='/books']")
+	private WebElement booksLink;
+	
 	//Actions
 	
 	public String getDashboardUrl() {
@@ -30,6 +33,12 @@ public class DashboardPage extends BasePage {
 		
 		return customerInfoLink.getText().trim();
 		
+	}
+	
+	// Shopping flow
+	public void clickOnBooksLink() {
+		waitForElementToBeClickable(booksLink);
+		click(booksLink);
 	}
 	
 	public void clickLogoutButton() {

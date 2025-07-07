@@ -1,29 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-06T14:02:03 SELČ" name="Default suite" finished-at="2025-07-06T14:02:08 SELČ" duration-ms="4978">
+  <suite started-at="2025-07-07T07:06:47 SELČ" name="Suite" finished-at="2025-07-07T07:07:01 SELČ" duration-ms="13681">
     <groups>
     </groups>
-    <test started-at="2025-07-06T14:02:03 SELČ" name="Default test" finished-at="2025-07-06T14:02:08 SELČ" duration-ms="4978">
-      <class name="tests.LoginValidTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.LoginValidTest@2b0f373b]" started-at="2025-07-06T14:02:04 SELČ" name="setup" finished-at="2025-07-06T14:02:07 SELČ" duration-ms="3182" status="PASS">
+    <test started-at="2025-07-07T07:06:47 SELČ" name="Test" finished-at="2025-07-07T07:07:01 SELČ" duration-ms="13681">
+      <class name="tests.RegisterValidTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.RegisterValidTest@acdb094]" started-at="2025-07-07T07:06:47 SELČ" name="setup" finished-at="2025-07-07T07:06:50 SELČ" duration-ms="3158" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testValidLogin()[pri:0, instance:tests.LoginValidTest@2b0f373b]" started-at="2025-07-06T14:02:07 SELČ" name="testValidLogin" description="Valid user login with correct data" finished-at="2025-07-06T14:02:08 SELČ" duration-ms="1097" status="PASS">
+        <test-method signature="testValidRegistration()[pri:0, instance:tests.RegisterValidTest@acdb094]" started-at="2025-07-07T07:06:50 SELČ" name="testValidRegistration" description="Valid user registration with correct data" finished-at="2025-07-07T07:06:53 SELČ" duration-ms="2182" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testValidRegistration -->
+        <test-method is-config="true" signature="logout()[pri:0, instance:tests.RegisterValidTest@acdb094]" started-at="2025-07-07T07:06:53 SELČ" name="logout" finished-at="2025-07-07T07:06:53 SELČ" duration-ms="537" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logout -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.RegisterValidTest@acdb094]" started-at="2025-07-07T07:07:01 SELČ" name="tearDown" finished-at="2025-07-07T07:07:01 SELČ" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.RegisterValidTest -->
+      <class name="tests.AddProductToCartTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.AddProductToCartTest@50ecde95]" started-at="2025-07-07T07:06:56 SELČ" name="setup" finished-at="2025-07-07T07:06:59 SELČ" duration-ms="2791" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="addOneProductToCart_ValidProduct()[pri:0, instance:tests.AddProductToCartTest@50ecde95]" started-at="2025-07-07T07:06:59 SELČ" name="addOneProductToCart_ValidProduct" description="Add one valid product with id 13 to cart" finished-at="2025-07-07T07:07:01 SELČ" duration-ms="1586" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addOneProductToCart_ValidProduct -->
+      </class> <!-- tests.AddProductToCartTest -->
+      <class name="tests.LoginValidTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.LoginValidTest@2072acb2]" started-at="2025-07-07T07:06:53 SELČ" name="setup" finished-at="2025-07-07T07:06:55 SELČ" duration-ms="1691" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testValidLogin()[pri:0, instance:tests.LoginValidTest@2072acb2]" started-at="2025-07-07T07:06:55 SELČ" name="testValidLogin" description="Valid user login with correct data" finished-at="2025-07-07T07:06:56 SELČ" duration-ms="1086" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testValidLogin -->
-        <test-method is-config="true" signature="logoutLoggedUser()[pri:0, instance:tests.LoginValidTest@2b0f373b]" started-at="2025-07-06T14:02:08 SELČ" name="logoutLoggedUser" finished-at="2025-07-06T14:02:08 SELČ" duration-ms="542" status="PASS">
+        <test-method is-config="true" signature="logoutLoggedUser()[pri:0, instance:tests.LoginValidTest@2072acb2]" started-at="2025-07-07T07:06:56 SELČ" name="logoutLoggedUser" finished-at="2025-07-07T07:06:56 SELČ" duration-ms="517" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logoutLoggedUser -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.LoginValidTest@2b0f373b]" started-at="2025-07-06T14:02:08 SELČ" name="tearDown" finished-at="2025-07-06T14:02:08 SELČ" duration-ms="125" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.LoginValidTest@2072acb2]" started-at="2025-07-07T07:07:01 SELČ" name="tearDown" finished-at="2025-07-07T07:07:01 SELČ" duration-ms="101" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- tests.LoginValidTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>

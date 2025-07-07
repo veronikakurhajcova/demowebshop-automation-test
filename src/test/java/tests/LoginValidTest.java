@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import demowebshop.base.BaseTest;
 import pages.DashboardPage;
+import pages.HeaderPage;
 import pages.IndexPage;
 import pages.LoginPage;
 import utils.RetryAnalyzer;
@@ -15,6 +16,7 @@ import utils.RetryAnalyzer;
 public class LoginValidTest extends BaseTest {
 
 	IndexPage indexPage;
+	HeaderPage headerPage;
 	LoginPage loginPage;
 	DashboardPage dashboardPage;
 
@@ -29,6 +31,7 @@ public class LoginValidTest extends BaseTest {
 
 		initializeBrowser();
 		indexPage = new IndexPage();
+		headerPage = new HeaderPage();
 		dashboardPage = new DashboardPage();
 		loginPage = new LoginPage();
 
@@ -38,7 +41,7 @@ public class LoginValidTest extends BaseTest {
 	public void testValidLogin() {
 
 		log.info("Starting valid user login test");
-		indexPage.clickLoginLink();
+		headerPage.clickLoginLink();
 
 		log.info("Filling login form with valid data");
 		loginPage.loginRegisteredUser(testDataReader.getProperty("valid.email"),

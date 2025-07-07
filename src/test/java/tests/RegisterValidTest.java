@@ -11,12 +11,14 @@ import org.testng.annotations.Test;
 import demowebshop.base.BaseTest;
 import demowebshop.utils.PropertiesReader;
 import pages.DashboardPage;
+import pages.HeaderPage;
 import pages.IndexPage;
 import pages.RegisterPage;
 import utils.RetryAnalyzer;
 
 public class RegisterValidTest extends BaseTest {
 
+	HeaderPage headerPage;
 	IndexPage indexPage;
 	RegisterPage registerPage;
 	DashboardPage dashboardPage;
@@ -38,6 +40,7 @@ public class RegisterValidTest extends BaseTest {
 		// Initialize the browser and navigate to the URL
 		log.info("Initializing browser and navigating to the URL.");
 		initializeBrowser();
+		headerPage = new HeaderPage();
 		indexPage = new IndexPage();
 		registerPage = new RegisterPage();
 		dashboardPage = new DashboardPage();
@@ -47,7 +50,7 @@ public class RegisterValidTest extends BaseTest {
 	public void testValidRegistration() {
 
 		log.info("Starting valid user registration test.");
-		indexPage.clickRegisterLink();
+		headerPage.clickRegisterLink();
 
 		log.info("Filling in registration form with valid data.");
 		registerPage.registerUser(testDataReader.getProperty("valid.firstname"),
