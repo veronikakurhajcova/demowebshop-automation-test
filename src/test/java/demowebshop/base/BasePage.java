@@ -2,6 +2,8 @@ package demowebshop.base;
 
 import java.time.Duration;
 
+import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,10 +13,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage extends BaseTest {
 	WebDriver driver;
-	private WebDriverWait wait;
+	protected WebDriverWait wait;
 
 	// Initialize common actions for all pages
 	public BasePage() {
+		
 		this.driver = BaseTest.getDriver();
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -23,23 +26,31 @@ public class BasePage extends BaseTest {
 
 	// Actions
 	public void navigateTo(String url) {
+		
 		driver.get(url);
 	}
 
 	public String getPageTitle() {
+		
 		return driver.getTitle();
 	}
 
 	public String getCurrentUrl() {
+		
 		return driver.getCurrentUrl();
 	}
 
 	public void click(WebElement element) {
-		wait.until(ExpectedConditions.elementToBeClickable(element));
-		element.click();
+		
+	    try {
+	        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+	    } catch (ElementClickInterceptedException e) {
+	        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+	    }
 	}
 
 	public void sendKeys(WebElement element, String text) {
+		
 		wait.until(ExpectedConditions.visibilityOf(element));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 		element.clear();
@@ -47,10 +58,12 @@ public class BasePage extends BaseTest {
 	}
 
 	public void waitForElementToBeVisible(WebElement element) {
+		
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 	
 	public boolean isElementPresent(WebElement element) {
+		
 	    try {
 	        wait.until(ExpectedConditions.visibilityOf(element));
 	        return true; 
@@ -60,10 +73,12 @@ public class BasePage extends BaseTest {
 	}
 
 	public void waitForElementToBeClickable(WebElement element) {
+		
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 
 	public void scrollToElement(WebElement element) {
+		
 		((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 

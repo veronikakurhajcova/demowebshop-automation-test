@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import demowebshop.base.BaseTest;
 import pages.BooksPage;
+import pages.CheckoutPage;
 import pages.DashboardPage;
 import pages.HeaderPage;
 import pages.LoginPage;
@@ -20,6 +21,7 @@ public class ShoppingE2EFlowTest extends BaseTest {
 	DashboardPage dashboardPage;
 	BooksPage booksPage;
 	ShoppingCartPage shoppingCartPage;
+	CheckoutPage checkoutPage;
 
 	String expectedName = cartReader.getProperty("cart.product.name");
 	double expectedPrice = Double.parseDouble(cartReader.getProperty("cart.product.price"));
@@ -45,6 +47,7 @@ public class ShoppingE2EFlowTest extends BaseTest {
 		dashboardPage = new DashboardPage();
 		booksPage = new BooksPage();
 		shoppingCartPage = new ShoppingCartPage();
+		checkoutPage = new CheckoutPage();
 
 		log.info("Add product to cart");
 		headerPage.clickLoginLink();
@@ -111,7 +114,31 @@ public class ShoppingE2EFlowTest extends BaseTest {
 		Assert.assertEquals(shoppingCartPage.getCheckoutCurrentUrl(), cartReader.getProperty("cart.expected.url"),
 				"Checkout URL does not match");
 		
-		//billing Address
+		//enter billing informations
+		log.info("Verify pre-filled billing information");
+		Assert.assertEquals(checkoutPage.getBillingFirstName(), cartReader.getProperty("valid.firstname"), "First name mismatch");
+		Assert.assertEquals(checkoutPage.getBillingLastName(), cartReader.getProperty("valid.lastname"), "Last name mismatch");
+		Assert.assertEquals(checkoutPage.getBillingEmail(), cartReader.getProperty("valid.email"), "Email mismatch");
+		
+		log.info("Fill remaining billing address fields");
+		checkoutPage.selectBillingCountry(cartReader.getProperty("valid.billing.country"));
+		Assert.assertEquals(checkoutPage.getSelectedBillingCountry(), cartReader.getProperty("valid.billing.country"), "Billing country was not selected correctly");
+
+		checkoutPage.enterBillingCity(cartReader.getProperty("valid.billing.city"));
+		Assert.assertEquals(checkoutPage.getBillingCity(), cartReader.getProperty("valid.billing.city"), "Billing city mismatch");
+
+		checkoutPage.enterBillingAddress1(cartReader.getProperty("valid.billing.address1"));
+		Assert.assertEquals(checkoutPage.getBillingAddress1(), cartReader.getProperty("valid.billing.address1"), "Billing address mismatch");
+
+		checkoutPage.enterBillingZipPostalCode(cartReader.getProperty("valid.billing.zippostalcode"));
+		Assert.assertEquals(checkoutPage.getBillingZipPostalCode(), cartReader.getProperty("valid.billing.zippostalcode"), "Billing postal code mismatch");
+
+		checkoutPage.enterBillingPhoneNumber(cartReader.getProperty("valid.billing.phonenumber"));
+		Assert.assertEquals(checkoutPage.getBillingPhoneNumber(), cartReader.getProperty("valid.billing.phonenumber"), "Billing phone number mismatch");
+		
+		log.info("Proceed to next step from billing address");
+		checkoutPage.clickBillingContinueButton();
+		
 		
 	}
 
