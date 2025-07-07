@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage extends BaseTest {
-	WebDriver driver;
+	protected WebDriver driver;
 	protected WebDriverWait wait;
 
 	// Initialize common actions for all pages

@@ -1,18 +1,20 @@
 package pages;
 
+import java.time.Duration;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import demowebshop.base.BasePage;
 
 public class CheckoutPage extends BasePage {
 	
 	public CheckoutPage() {
-		
 		super();
-		
 	}
 	
 	// Elements
@@ -45,65 +47,51 @@ public class CheckoutPage extends BasePage {
 
 	//Actions
 	public String getBillingFirstName() {
-		
 	    return firstNameInBillingAddress.getAttribute("value");
-		
 	}
 	
 	public String getBillingLastName() {
-		
 		return lastNameInBillingAddress.getAttribute("value");
-		
 	}
 	
 	public String getBillingEmail() {
-		
 		return emailInBillingAddress.getAttribute("value");
-		
 	}
 	
-	public void selectBillingCountry(String country) {
-		
-		waitForElementToBeVisible(countryInBillingAddress);
-		waitForElementToBeClickable(addressInBillingAddress);
-		Select select = new Select(countryInBillingAddress);
-		select.selectByVisibleText(country);
-		
+	public void waitForBillingAddressSection() {
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("BillingNewAddress_FirstName")));
+	}
+	
+	public void selectBillingCountry(String countryName) {
+		waitForBillingAddressSection(); 
+	    wait.until(ExpectedConditions.visibilityOf(countryInBillingAddress));
+	    Select select = new Select(countryInBillingAddress);
+	    select.selectByVisibleText(countryName);
 	}
 	
 	public void enterBillingCity(String city) {
-		
 		waitForElementToBeClickable(cityInBillingAddress);
 		sendKeys(cityInBillingAddress, city);
-		
 	}
 	
 	public void enterBillingAddress1(String address) {
-		
 		sendKeys(addressInBillingAddress, address);
-		
 	}
 	
 	public void enterBillingZipPostalCode(String postalZipCode) {
-		
 		waitForElementToBeClickable(zipPostalCodeBillingAddress);
 		sendKeys(zipPostalCodeBillingAddress, postalZipCode);
-		
 	}
 	
 	public void enterBillingPhoneNumber(String phoneNumber) {
-		
 		waitForElementToBeClickable(phoneNumberInBillingAddress);
 		sendKeys(phoneNumberInBillingAddress, phoneNumber);
-		
 	}
 	
 	public void clickBillingContinueButton() {
-		
 		waitForElementToBeClickable(continueButtonInBillingAddress);
 	    click(continueButtonInBillingAddress);
 	    wait.until(ExpectedConditions.invisibilityOf(continueButtonInBillingAddress));
-		
 	}
 	
 	public String getSelectedBillingCountry() {
@@ -126,6 +114,19 @@ public class CheckoutPage extends BasePage {
 	public String getBillingPhoneNumber() {
 	    return phoneNumberInBillingAddress.getAttribute("value");
 	}
-
+	
+	public void waitForBillingAddressSection1() {
+	    try {
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading-overlay")));
+	    } catch (Exception e) {
+	       
+	    }
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("billing-address-form")));
+	}
+	
+	public void waitForContinueButton() {
+	    wait.until(ExpectedConditions.elementToBeClickable(continueButtonInBillingAddress));
+	}
 
 }
