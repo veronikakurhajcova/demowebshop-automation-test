@@ -92,7 +92,7 @@ public class RegisterValidTest extends BaseTest {
 		        Assert.assertEquals(indexPage.getCurrentUrl(), configReader.getProperty("url"), 
 		                "URL after logout does not match the base URL.");
 		    } catch (Exception e) {
-		        log.warn("Logout was not possible, možno už nie je prihlásený alebo chyba na stránke. Detail: " + e.getMessage());
+		        log.warn("Logout was not possible. Detail: " + e.getMessage());
 		    }
 	}
 	
