@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -55,5 +56,12 @@ public class ConfirmOrderPage extends BasePage {
 	        confirmButton.click();
 	        wait.until(ExpectedConditions.invisibilityOf(confirmButton));
 	    }
+	    
+	    public String getOrderSuccessMessage() {
+	        WebElement successMessage = wait
+	            .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.section.order-completed div.title strong")));
+	        return successMessage.getText();
+	    }
+
 
 }

@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-08T00:08:51 SELČ" name="Default suite" finished-at="2025-07-08T00:09:14 SELČ" duration-ms="22903">
+  <suite started-at="2025-07-08T00:17:27 SELČ" name="Default suite" finished-at="2025-07-08T00:18:10 SELČ" duration-ms="42853">
     <groups>
     </groups>
-    <test started-at="2025-07-08T00:08:51 SELČ" name="Default test" finished-at="2025-07-08T00:09:14 SELČ" duration-ms="22903">
+    <test started-at="2025-07-08T00:17:27 SELČ" name="Default test" finished-at="2025-07-08T00:18:10 SELČ" duration-ms="42853">
       <class name="tests.ShoppingE2EFlowTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@47f4e407]" started-at="2025-07-08T00:08:51 SELČ" name="setup" finished-at="2025-07-08T00:08:57 SELČ" duration-ms="5830" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@57ea113a]" started-at="2025-07-08T00:17:27 SELČ" name="setup" finished-at="2025-07-08T00:17:52 SELČ" duration-ms="25731" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="shoppingE2EFlow()[pri:0, instance:tests.ShoppingE2EFlowTest@47f4e407]" started-at="2025-07-08T00:08:57 SELČ" name="shoppingE2EFlow" description="Shopping e2e flow" finished-at="2025-07-08T00:09:14 SELČ" duration-ms="16926" status="PASS">
+        <test-method signature="shoppingE2EFlow()[pri:0, instance:tests.ShoppingE2EFlowTest@57ea113a]" started-at="2025-07-08T00:17:52 SELČ" name="shoppingE2EFlow" description="Shopping e2e flow" finished-at="2025-07-08T00:18:09 SELČ" duration-ms="16930" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- shoppingE2EFlow -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@47f4e407]" started-at="2025-07-08T00:09:14 SELČ" name="tearDown" finished-at="2025-07-08T00:09:14 SELČ" duration-ms="115" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@57ea113a]" started-at="2025-07-08T00:18:09 SELČ" name="tearDown" finished-at="2025-07-08T00:18:10 SELČ" duration-ms="160" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

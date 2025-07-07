@@ -184,6 +184,9 @@ public class ShoppingE2EFlowTest extends BaseTest {
 
 		log.info("Click confirm to place the order");
 		confirmOrderPage.clickConfirm();
+		
+		Assert.assertTrue(confirmOrderPage.getOrderSuccessMessage().contains("Your order has been successfully processed"));
+
 	}
 
 	@AfterTest
