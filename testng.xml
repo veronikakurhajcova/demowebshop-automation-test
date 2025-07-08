@@ -2,10 +2,12 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
 	<listeners>
-		<listener class-name="listeners.TestListener" />
+		<listener class-name="listeners.TestListener"></listener>
 	</listeners>
 	<test thread-count="5" name="Test">
 		<classes>
+			<class name="tests.LoginFunctionalityTest" />
+			<class name="tests.AddProductToCartTest" />
 			<class name="tests.ShoppingE2EFlowTest" />
 		</classes>
 	</test> <!--

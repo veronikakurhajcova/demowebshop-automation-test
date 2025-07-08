@@ -1,7 +1,7 @@
 package tests;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -11,6 +11,7 @@ import pages.DashboardPage;
 import pages.HeaderPage;
 import pages.IndexPage;
 import pages.LoginPage;
+import pages.ShoppingCartPage;
 import utils.RetryAnalyzer;
 
 public class AddProductToCartTest extends BaseTest {
@@ -20,6 +21,7 @@ public class AddProductToCartTest extends BaseTest {
 	LoginPage loginPage;
 	DashboardPage dashboardPage;
 	BooksPage booksPage;
+	ShoppingCartPage shoppingCartPage;
 	
 	public AddProductToCartTest() {
 		
@@ -37,9 +39,12 @@ public class AddProductToCartTest extends BaseTest {
 		loginPage = new LoginPage();
 		dashboardPage = new DashboardPage();
 		booksPage = new BooksPage();
+		shoppingCartPage = new ShoppingCartPage();
 		
 		headerPage.clickLoginLink();
 		loginPage.loginRegisteredUser(testDataReader.getProperty("valid.email"), testDataReader.getProperty("valid.password"));
+		headerPage.clickOnShoppingCartLink();
+		shoppingCartPage.clearShoppingCart();
 	}
 	
 	@Test(description = "Add one valid product with id 13 to cart", retryAnalyzer = RetryAnalyzer.class)
@@ -59,7 +64,7 @@ public class AddProductToCartTest extends BaseTest {
 		
 	}
 	
-	@AfterTest
+	@AfterMethod
 	public void tearDown() {
 
 		log.info("Closing the browser after logout completion.");

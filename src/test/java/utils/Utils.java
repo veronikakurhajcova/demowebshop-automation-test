@@ -12,17 +12,25 @@ import org.openqa.selenium.WebDriver;
 
 public class Utils {
 	
-	  public static String takeScreenshot(WebDriver driver, String testName) {
-	        TakesScreenshot ts = (TakesScreenshot) driver;
-	        File source = ts.getScreenshotAs(OutputType.FILE);
-	        String dest = "screenshots/" + testName + "_" + System.currentTimeMillis() + ".png";
-	        File destination = new File(dest);
-	        try {
-	            FileUtils.copyFile(source, destination);
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-	        return dest;
+	public static String takeScreenshot(WebDriver driver, String testName) {
+	    TakesScreenshot ts = (TakesScreenshot) driver;
+	    File source = ts.getScreenshotAs(OutputType.FILE);
+
+	    String dir = "test-output/screenshots"; 
+	    File screenshotsDir = new File(dir);
+	    if (!screenshotsDir.exists()) {
+	        screenshotsDir.mkdirs(); 
 	    }
 
+	    String fileName = testName + "_" + System.currentTimeMillis() + ".png";
+	    File destination = new File(screenshotsDir, fileName);
+
+	    try {
+	        FileUtils.copyFile(source, destination);
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+
+	    return "screenshots/" + fileName; 
+	}
 }

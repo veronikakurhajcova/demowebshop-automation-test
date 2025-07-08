@@ -1,133 +1,165 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="10" passed="10" failed="0" skipped="0">
+<testng-results ignored="0" total="12" passed="12" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-08T21:24:54 SELČ" name="Suite" finished-at="2025-07-08T21:27:19 SELČ" duration-ms="145015">
+  <suite started-at="2025-07-08T22:31:07 SELČ" name="Suite" finished-at="2025-07-08T22:33:42 SELČ" duration-ms="155235">
     <groups>
     </groups>
-    <test started-at="2025-07-08T21:24:54 SELČ" name="Test" finished-at="2025-07-08T21:27:19 SELČ" duration-ms="145015">
+    <test started-at="2025-07-08T22:31:07 SELČ" name="Test" finished-at="2025-07-08T22:33:42 SELČ" duration-ms="155235">
       <class name="tests.ShoppingE2EFlowTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:24:54 SELČ" name="setup" finished-at="2025-07-08T21:25:00 SELČ" duration-ms="5673" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:31:17 SELČ" name="setup" finished-at="2025-07-08T22:31:22 SELČ" duration-ms="5131" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testBillingInformation()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:25:00 SELČ" name="testBillingInformation" description="Billing information" finished-at="2025-07-08T21:25:02 SELČ" duration-ms="2461" status="PASS">
+        <test-method signature="testBillingInformation()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:31:22 SELČ" name="testBillingInformation" description="Billing information" finished-at="2025-07-08T22:31:25 SELČ" duration-ms="2487" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testBillingInformation -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:25:02 SELČ" name="tearDown" finished-at="2025-07-08T21:25:03 SELČ" duration-ms="128" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:31:25 SELČ" name="tearDown" finished-at="2025-07-08T22:31:25 SELČ" duration-ms="113" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:25:03 SELČ" name="setup" finished-at="2025-07-08T21:25:08 SELČ" duration-ms="5312" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:31:25 SELČ" name="setup" finished-at="2025-07-08T22:31:31 SELČ" duration-ms="5635" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testConfirmOrderDetails()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:25:08 SELČ" name="testConfirmOrderDetails" description="Confirm order details" finished-at="2025-07-08T21:25:24 SELČ" duration-ms="15856" status="PASS">
+        <test-method signature="testConfirmOrderDetails()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:31:31 SELČ" name="testConfirmOrderDetails" description="Confirm order details" finished-at="2025-07-08T22:31:47 SELČ" duration-ms="16077" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testConfirmOrderDetails -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:25:24 SELČ" name="tearDown" finished-at="2025-07-08T21:25:24 SELČ" duration-ms="115" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:31:47 SELČ" name="tearDown" finished-at="2025-07-08T22:31:47 SELČ" duration-ms="135" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:25:24 SELČ" name="setup" finished-at="2025-07-08T21:25:48 SELČ" duration-ms="24366" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:31:47 SELČ" name="setup" finished-at="2025-07-08T22:32:12 SELČ" duration-ms="24989" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testOrderCompletion()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:25:48 SELČ" name="testOrderCompletion" description="Order completion" finished-at="2025-07-08T21:26:04 SELČ" duration-ms="15643" status="PASS">
+        <test-method signature="testOrderCompletion()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:32:12 SELČ" name="testOrderCompletion" description="Order completion" finished-at="2025-07-08T22:32:27 SELČ" duration-ms="15718" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testOrderCompletion -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:26:04 SELČ" name="tearDown" finished-at="2025-07-08T21:26:04 SELČ" duration-ms="121" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:32:27 SELČ" name="tearDown" finished-at="2025-07-08T22:32:28 SELČ" duration-ms="123" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:26:04 SELČ" name="setup" finished-at="2025-07-08T21:26:29 SELČ" duration-ms="24515" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:32:28 SELČ" name="setup" finished-at="2025-07-08T22:32:52 SELČ" duration-ms="24694" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testPaymentInformation()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:26:29 SELČ" name="testPaymentInformation" description="Payment information verification" finished-at="2025-07-08T21:26:33 SELČ" duration-ms="4651" status="PASS">
+        <test-method signature="testPaymentInformation()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:32:52 SELČ" name="testPaymentInformation" description="Payment information verification" finished-at="2025-07-08T22:32:57 SELČ" duration-ms="4706" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPaymentInformation -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:26:33 SELČ" name="tearDown" finished-at="2025-07-08T21:26:33 SELČ" duration-ms="128" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:32:57 SELČ" name="tearDown" finished-at="2025-07-08T22:32:57 SELČ" duration-ms="130" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:26:33 SELČ" name="setup" finished-at="2025-07-08T21:26:38 SELČ" duration-ms="5050" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:32:57 SELČ" name="setup" finished-at="2025-07-08T22:33:02 SELČ" duration-ms="5125" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testPaymentMethodSelection()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:26:38 SELČ" name="testPaymentMethodSelection" description="Payment method selection" finished-at="2025-07-08T21:26:42 SELČ" duration-ms="4092" status="PASS">
+        <test-method signature="testPaymentMethodSelection()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:33:02 SELČ" name="testPaymentMethodSelection" description="Payment method selection" finished-at="2025-07-08T22:33:06 SELČ" duration-ms="4126" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPaymentMethodSelection -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:26:42 SELČ" name="tearDown" finished-at="2025-07-08T21:26:43 SELČ" duration-ms="130" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:33:06 SELČ" name="tearDown" finished-at="2025-07-08T22:33:07 SELČ" duration-ms="130" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:26:43 SELČ" name="setup" finished-at="2025-07-08T21:26:48 SELČ" duration-ms="5144" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:33:07 SELČ" name="setup" finished-at="2025-07-08T22:33:12 SELČ" duration-ms="5142" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testShippingAndTotals()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:26:48 SELČ" name="testShippingAndTotals" description="Estimate shipping and check totals" finished-at="2025-07-08T21:26:49 SELČ" duration-ms="1715" status="PASS">
+        <test-method signature="testShippingAndTotals()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:33:12 SELČ" name="testShippingAndTotals" description="Estimate shipping and check totals" finished-at="2025-07-08T22:33:13 SELČ" duration-ms="1681" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testShippingAndTotals -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:26:49 SELČ" name="tearDown" finished-at="2025-07-08T21:26:50 SELČ" duration-ms="130" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:33:13 SELČ" name="tearDown" finished-at="2025-07-08T22:33:13 SELČ" duration-ms="124" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:26:50 SELČ" name="setup" finished-at="2025-07-08T21:26:55 SELČ" duration-ms="4927" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:33:13 SELČ" name="setup" finished-at="2025-07-08T22:33:19 SELČ" duration-ms="5020" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testShippingInformation()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:26:55 SELČ" name="testShippingInformation" description="Shipping information" finished-at="2025-07-08T21:26:57 SELČ" duration-ms="2940" status="PASS">
+        <test-method signature="testShippingInformation()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:33:19 SELČ" name="testShippingInformation" description="Shipping information" finished-at="2025-07-08T22:33:21 SELČ" duration-ms="2988" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testShippingInformation -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:26:57 SELČ" name="tearDown" finished-at="2025-07-08T21:26:58 SELČ" duration-ms="113" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:33:21 SELČ" name="tearDown" finished-at="2025-07-08T22:33:22 SELČ" duration-ms="107" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:26:58 SELČ" name="setup" finished-at="2025-07-08T21:27:03 SELČ" duration-ms="4974" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:33:22 SELČ" name="setup" finished-at="2025-07-08T22:33:27 SELČ" duration-ms="4959" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testShippingMethodSelection()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:27:03 SELČ" name="testShippingMethodSelection" description="Shipping method selection" finished-at="2025-07-08T21:27:06 SELČ" duration-ms="3589" status="PASS">
+        <test-method signature="testShippingMethodSelection()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:33:27 SELČ" name="testShippingMethodSelection" description="Shipping method selection" finished-at="2025-07-08T22:33:30 SELČ" duration-ms="3591" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testShippingMethodSelection -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:27:06 SELČ" name="tearDown" finished-at="2025-07-08T21:27:06 SELČ" duration-ms="129" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:33:30 SELČ" name="tearDown" finished-at="2025-07-08T22:33:30 SELČ" duration-ms="111" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:27:06 SELČ" name="setup" finished-at="2025-07-08T21:27:12 SELČ" duration-ms="5575" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:33:30 SELČ" name="setup" finished-at="2025-07-08T22:33:35 SELČ" duration-ms="4941" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testShoppingCartDetails()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:27:12 SELČ" name="testShoppingCartDetails" description="Check shopping cart details" finished-at="2025-07-08T21:27:12 SELČ" duration-ms="506" status="PASS">
+        <test-method signature="testShoppingCartDetails()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:33:35 SELČ" name="testShoppingCartDetails" description="Check shopping cart details" finished-at="2025-07-08T22:33:36 SELČ" duration-ms="475" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testShoppingCartDetails -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:27:12 SELČ" name="tearDown" finished-at="2025-07-08T21:27:12 SELČ" duration-ms="111" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:33:36 SELČ" name="tearDown" finished-at="2025-07-08T22:33:36 SELČ" duration-ms="115" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:27:12 SELČ" name="setup" finished-at="2025-07-08T21:27:18 SELČ" duration-ms="5070" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:33:36 SELČ" name="setup" finished-at="2025-07-08T22:33:41 SELČ" duration-ms="4889" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testSubmitOrderAndCheckoutUrl()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:27:18 SELČ" name="testSubmitOrderAndCheckoutUrl" description="Submit order and check checkout URL" finished-at="2025-07-08T21:27:19 SELČ" duration-ms="1684" status="PASS">
+        <test-method signature="testSubmitOrderAndCheckoutUrl()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:33:41 SELČ" name="testSubmitOrderAndCheckoutUrl" description="Submit order and check checkout URL" finished-at="2025-07-08T22:33:42 SELČ" duration-ms="1656" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSubmitOrderAndCheckoutUrl -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@112f364d]" started-at="2025-07-08T21:27:19 SELČ" name="tearDown" finished-at="2025-07-08T21:27:19 SELČ" duration-ms="121" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ShoppingE2EFlowTest@37ebc9d8]" started-at="2025-07-08T22:33:42 SELČ" name="tearDown" finished-at="2025-07-08T22:33:42 SELČ" duration-ms="106" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- tests.ShoppingE2EFlowTest -->
+      <class name="tests.LoginFunctionalityTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.LoginFunctionalityTest@1e5f4170]" started-at="2025-07-08T22:31:07 SELČ" name="setup" finished-at="2025-07-08T22:31:10 SELČ" duration-ms="2666" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testValidLogin()[pri:0, instance:tests.LoginFunctionalityTest@1e5f4170]" started-at="2025-07-08T22:31:10 SELČ" name="testValidLogin" description="Valid user login with correct data" finished-at="2025-07-08T22:31:11 SELČ" duration-ms="1269" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testValidLogin -->
+        <test-method is-config="true" signature="logoutLoggedUser()[pri:0, instance:tests.LoginFunctionalityTest@1e5f4170]" started-at="2025-07-08T22:31:11 SELČ" name="logoutLoggedUser" finished-at="2025-07-08T22:31:12 SELČ" duration-ms="551" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logoutLoggedUser -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.LoginFunctionalityTest@1e5f4170]" started-at="2025-07-08T22:31:12 SELČ" name="tearDown" finished-at="2025-07-08T22:31:12 SELČ" duration-ms="150" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.LoginFunctionalityTest -->
+      <class name="tests.AddProductToCartTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.AddProductToCartTest@5217f3d0]" started-at="2025-07-08T22:31:12 SELČ" name="setup" finished-at="2025-07-08T22:31:16 SELČ" duration-ms="4013" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="addOneProductToCart_ValidProduct()[pri:0, instance:tests.AddProductToCartTest@5217f3d0]" started-at="2025-07-08T22:31:16 SELČ" name="addOneProductToCart_ValidProduct" description="Add one valid product with id 13 to cart" finished-at="2025-07-08T22:31:17 SELČ" duration-ms="1194" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addOneProductToCart_ValidProduct -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.AddProductToCartTest@5217f3d0]" started-at="2025-07-08T22:31:17 SELČ" name="tearDown" finished-at="2025-07-08T22:31:17 SELČ" duration-ms="113" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.AddProductToCartTest -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>
