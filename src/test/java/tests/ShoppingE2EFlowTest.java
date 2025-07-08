@@ -1,7 +1,7 @@
 package tests;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -138,7 +138,7 @@ public class ShoppingE2EFlowTest extends BaseTest {
 
 	@Test(description = "Submit order and check checkout URL", retryAnalyzer = RetryAnalyzer.class)
 	public void testSubmitOrderAndCheckoutUrl() {
-		
+
 		headerPage.clickOnShoppingCartLink();
 		shoppingCartPage.selectCountry(cartReader.getProperty("cart.country"));
 		shoppingCartPage.clickEstimateShippingButton();
@@ -149,12 +149,12 @@ public class ShoppingE2EFlowTest extends BaseTest {
 
 		Assert.assertEquals(shoppingCartPage.getCheckoutCurrentUrl(), cartReader.getProperty("cart.expected.url"),
 				"Checkout URL does not match");
-		
+
 	}
 
 	@Test(description = "Billing information", retryAnalyzer = RetryAnalyzer.class)
 	public void testBillingInformation() {
-		
+
 		headerPage.clickOnShoppingCartLink();
 		shoppingCartPage.selectCountry(cartReader.getProperty("cart.country"));
 		shoppingCartPage.clickEstimateShippingButton();
@@ -165,14 +165,14 @@ public class ShoppingE2EFlowTest extends BaseTest {
 		String actualBillingAddressText = checkoutPage.getSelectedBillingAddressText();
 		Assert.assertTrue(checkoutPage.isSelectedBillingAddressContaining(cartReader.getProperty("valid.lastname")),
 				"Billing address mismatch. Actual: " + actualBillingAddressText);
-		
+
 		checkoutPage.clickBillingContinueButton();
-		
+
 	}
 
 	@Test(description = "Shipping information", retryAnalyzer = RetryAnalyzer.class)
 	public void testShippingInformation() {
-		
+
 		headerPage.clickOnShoppingCartLink();
 		shoppingCartPage.selectCountry(cartReader.getProperty("cart.country"));
 		shoppingCartPage.clickEstimateShippingButton();
@@ -183,14 +183,14 @@ public class ShoppingE2EFlowTest extends BaseTest {
 		String actualShippingAddressText = shippingPage.getSelectedShippingAddressText();
 		Assert.assertTrue(shippingPage.isSelectedShippingAddressContaining(cartReader.getProperty("valid.lastname")),
 				"Shipping address mismatch. Actual: " + actualShippingAddressText);
-		
+
 		shippingPage.clickContinue();
 
 	}
 
 	@Test(description = "Shipping method selection", retryAnalyzer = RetryAnalyzer.class)
 	public void testShippingMethodSelection() {
-		
+
 		headerPage.clickOnShoppingCartLink();
 		shoppingCartPage.selectCountry(cartReader.getProperty("cart.country"));
 		shoppingCartPage.clickEstimateShippingButton();
@@ -204,14 +204,14 @@ public class ShoppingE2EFlowTest extends BaseTest {
 
 		shippingMethodPage.selectGroundShippingMethod();
 		Assert.assertTrue(shippingMethodPage.isGroundShippingMethodSelected(), "Ground shipping method not selected");
-		
+
 		shippingMethodPage.clickContinue();
 
 	}
 
 	@Test(description = "Payment method selection", retryAnalyzer = RetryAnalyzer.class)
 	public void testPaymentMethodSelection() {
-		
+
 		headerPage.clickOnShoppingCartLink();
 		shoppingCartPage.selectCountry(cartReader.getProperty("cart.country"));
 		shoppingCartPage.clickEstimateShippingButton();
@@ -223,14 +223,14 @@ public class ShoppingE2EFlowTest extends BaseTest {
 
 		paymentMethodPage.selectCashOnDeliveryPaymentMethod();
 		Assert.assertTrue(paymentMethodPage.isCasOnDeliveryPaymentMethodSelected(), "COD payment method not selected");
-		
+
 		paymentMethodPage.clickContinue();
 
 	}
 
 	@Test(description = "Payment information verification", retryAnalyzer = RetryAnalyzer.class)
 	public void testPaymentInformation() {
-		
+
 		headerPage.clickOnShoppingCartLink();
 		shoppingCartPage.selectCountry(cartReader.getProperty("cart.country"));
 		shoppingCartPage.clickEstimateShippingButton();
@@ -244,14 +244,14 @@ public class ShoppingE2EFlowTest extends BaseTest {
 		Assert.assertTrue(paymentInformationPage.isPaymentInfoDisplayed(), "Payment info not displayed");
 		Assert.assertEquals(paymentInformationPage.getPaymentInfoText(),
 				messageReader.getProperty("payment.information.cod"));
-		
+
 		paymentInformationPage.clickContinue();
-		
+
 	}
 
 	@Test(description = "Confirm order details", retryAnalyzer = RetryAnalyzer.class)
 	public void testConfirmOrderDetails() {
-		
+
 		headerPage.clickOnShoppingCartLink();
 		shoppingCartPage.selectCountry(cartReader.getProperty("cart.country"));
 		shoppingCartPage.clickEstimateShippingButton();
@@ -288,12 +288,12 @@ public class ShoppingE2EFlowTest extends BaseTest {
 				"Shipping zip mismatch");
 
 		confirmOrderPage.clickConfirm();
-		
+
 	}
 
 	@Test(description = "Order completion", retryAnalyzer = RetryAnalyzer.class)
 	public void testOrderCompletion() {
-		
+
 		headerPage.clickOnShoppingCartLink();
 		shoppingCartPage.selectCountry(cartReader.getProperty("cart.country"));
 		shoppingCartPage.clickEstimateShippingButton();
@@ -319,7 +319,7 @@ public class ShoppingE2EFlowTest extends BaseTest {
 				"Order details link not displayed");
 	}
 
-	@AfterTest
+	@AfterMethod
 	public void tearDown() {
 
 		log.info("Closing the browser after logout completion.");
