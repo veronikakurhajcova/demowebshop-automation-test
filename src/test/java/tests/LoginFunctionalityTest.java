@@ -57,25 +57,18 @@ public class LoginFunctionalityTest extends BaseTest {
 	@AfterMethod
 	public void logoutLoggedUser() {
 		// logout user after login
+		 try {
+		        dashboardPage.clickLogoutButton();
+		        log.info("User logged out successfully.");
 
-		try {
-			dashboardPage.clickLogoutButton();
-			log.info("User logged out successfully.");
-
-			Assert.assertEquals(indexPage.getCurrentUrl(), dashboardReader.getProperty("dashboard.url"),
-					"URL after logout does not match the base URL.");
-		} catch (Exception e) {
-			log.warn("Logout was not possible"
-					+ e.getMessage());
-		}
-	}
-
-	@AfterMethod
-	public void tearDown() {
-
-		log.info("Closing the browser after logout completion.");
-		quitDriver();
-		
+		        Assert.assertEquals(indexPage.getCurrentUrl(), dashboardReader.getProperty("dashboard.url"),
+		                "URL after logout does not match the base URL.");
+		    } catch (Exception e) {
+		        log.warn("Logout was not possible: " + e.getMessage());
+		    } finally {
+		        log.info("Closing the browser after logout completion.");
+		        quitDriver();
+		    }
 	}
 
 }
