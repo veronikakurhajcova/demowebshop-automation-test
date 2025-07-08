@@ -40,7 +40,6 @@ public class ShoppingE2EFlowTest extends BaseTest {
 	double expectedShipping = Double.parseDouble(cartReader.getProperty("cart.product.shipping.price"));
 	double expectedTax = Double.parseDouble(cartReader.getProperty("cart.product.tax"));
 
-
 	public ShoppingE2EFlowTest() {
 
 		super();
@@ -63,12 +62,12 @@ public class ShoppingE2EFlowTest extends BaseTest {
 		paymentMethodPage = new PaymentMethodPage();
 		paymentInformationPage = new PaymentInformationPage();
 		confirmOrderPage = new ConfirmOrderPage();
-		
+
 		log.info("Add product to cart");
 		headerPage.clickLoginLink();
 		loginPage.loginRegisteredUser(testDataReader.getProperty("valid.email"),
 				testDataReader.getProperty("valid.password"));
-		
+
 		log.info("Clear shopping cart");
 		headerPage.clickOnShoppingCartLink();
 		shoppingCartPage.clearShoppingCart();
@@ -76,15 +75,15 @@ public class ShoppingE2EFlowTest extends BaseTest {
 		dashboardPage.clickOnBooksLink();
 		booksPage.addBookWithId13ToCart();
 		booksPage.verifySuccessBarNotificationAfterAddProductToCart(
-		booksReader.getProperty("cart.add.success.bar.notification"));
+				booksReader.getProperty("cart.add.success.bar.notification"));
 
 	}
 
 	@Test(description = "Shopping e2e flow", retryAnalyzer = RetryAnalyzer.class)
 	public void shoppingE2EFlow() {
-		
-		// Check shopping cart information 
-		
+
+		// Check shopping cart information
+
 		log.info("Click on shopping cart link");
 		headerPage.clickOnShoppingCartLink();
 
@@ -98,7 +97,7 @@ public class ShoppingE2EFlowTest extends BaseTest {
 				"Product quantity does not match");
 		Assert.assertEquals(shoppingCartPage.getProductSubtotalInShoppingCartInformation(), expectedTotal, 0.01,
 				"Product subtotal does not match");
-		
+
 		log.info("Select country");
 		shoppingCartPage.selectCountry(cartReader.getProperty("cart.country"));
 		Assert.assertTrue(shoppingCartPage.selectedCountryIsDisplayed(cartReader.getProperty("cart.country")),
@@ -130,62 +129,87 @@ public class ShoppingE2EFlowTest extends BaseTest {
 
 		Assert.assertEquals(shoppingCartPage.getCheckoutCurrentUrl(), cartReader.getProperty("cart.expected.url"),
 				"Checkout URL does not match");
-		
+
 		// Enter billing informations
-		
+
+		log.info("Check prefilled billing informations");
+		checkoutPage.selectPrefilledBillingAddress();
+		String actualBillingAddressText = checkoutPage.getSelectedBillingAddressText();
+		Assert.assertTrue(checkoutPage.isSelectedBillingAddressContaining(cartReader.getProperty("valid.lastname")),
+				"Prefilled address does not match. Actual text: " + actualBillingAddressText);
+
 		checkoutPage.clickBillingContinueButton();
-		
+
 		// Check shipping section
-		
+
 		log.info("Loading shipping section");
+		log.info("Check prefilled shipping informations");
+		String actualShippingAddressText= shippingPage.getSelectedShippingAddressText();
+		Assert.assertTrue(shippingPage.isSelectedShippingAddressContaining(cartReader.getProperty("valid.lastname")),
+				"Prefilled address does not match. Actual text: " + actualShippingAddressText);
 
 		shippingPage.clickContinue();
-		
-		
+
 		// Shipping method section
-		
+
 		log.info("Load shipping method section");
 		shippingMethodPage.waitForShippingMethodSection();
 
 		log.info("Verify shipping method is displayed");
-		Assert.assertTrue(shippingMethodPage.isShippingMethodDisplayed(), "Shipping method section is empty or not visible");
+		Assert.assertTrue(shippingMethodPage.isShippingMethodDisplayed(),
+				"Shipping method section is empty or not visible");
+		
+		log.info("Verify shipping method");
+		shippingMethodPage.selectGroundShippingMethod();
+		Assert.assertTrue(shippingMethodPage.isGroundShippingMethodSelected());
 
 		log.info("Click Continue in shipping method section");
 		shippingMethodPage.clickContinue();
-		
+
 		// Payment method section
 
 		log.info("Click continue on payment method step");
 		paymentMethodPage.clickContinue();
-		
+
 		// Payment information section
 
 		log.info("Click continue on payment information step");
 		paymentInformationPage.clickContinue();
-		
+
 		// Confirm order section
-		
+
 		log.info("Wait for confirm order section");
 		confirmOrderPage.waitForConfirmOrderSection();
 
 		String billingInfo = confirmOrderPage.getBillingInfoText();
-		Assert.assertTrue(billingInfo.contains(cartReader.getProperty("valid.firstname")), "Billing info - first name mismatch");
-		Assert.assertTrue(billingInfo.contains(cartReader.getProperty("valid.lastname")), "Billing info - last name mismatch");
-		Assert.assertTrue(billingInfo.contains(cartReader.getProperty("valid.billing.city")), "Billing info - city mismatch");
-		Assert.assertTrue(billingInfo.contains(cartReader.getProperty("valid.billing.address1")), "Billing info - address mismatch");
-		Assert.assertTrue(billingInfo.contains(cartReader.getProperty("valid.billing.zippostalcode")), "Billing info - zip mismatch");
+		Assert.assertTrue(billingInfo.contains(cartReader.getProperty("valid.firstname")),
+				"Billing info - first name mismatch");
+		Assert.assertTrue(billingInfo.contains(cartReader.getProperty("valid.lastname")),
+				"Billing info - last name mismatch");
+		Assert.assertTrue(billingInfo.contains(cartReader.getProperty("valid.billing.city")),
+				"Billing info - city mismatch");
+		Assert.assertTrue(billingInfo.contains(cartReader.getProperty("valid.billing.address1")),
+				"Billing info - address mismatch");
+		Assert.assertTrue(billingInfo.contains(cartReader.getProperty("valid.billing.zippostalcode")),
+				"Billing info - zip mismatch");
 
 		String shippingInfo = confirmOrderPage.getShippingInfoText();
-		Assert.assertTrue(shippingInfo.contains(cartReader.getProperty("valid.firstname")), "Shipping info - first name mismatch");
-		Assert.assertTrue(shippingInfo.contains(cartReader.getProperty("valid.lastname")), "Shipping info - last name mismatch");
-		Assert.assertTrue(shippingInfo.contains(cartReader.getProperty("valid.billing.city")), "Shipping info - city mismatch");
-		Assert.assertTrue(shippingInfo.contains(cartReader.getProperty("valid.billing.address1")), "Shipping info - address mismatch");
-		Assert.assertTrue(shippingInfo.contains(cartReader.getProperty("valid.billing.zippostalcode")), "Shipping info - zip mismatch");
+		Assert.assertTrue(shippingInfo.contains(cartReader.getProperty("valid.firstname")),
+				"Shipping info - first name mismatch");
+		Assert.assertTrue(shippingInfo.contains(cartReader.getProperty("valid.lastname")),
+				"Shipping info - last name mismatch");
+		Assert.assertTrue(shippingInfo.contains(cartReader.getProperty("valid.billing.city")),
+				"Shipping info - city mismatch");
+		Assert.assertTrue(shippingInfo.contains(cartReader.getProperty("valid.billing.address1")),
+				"Shipping info - address mismatch");
+		Assert.assertTrue(shippingInfo.contains(cartReader.getProperty("valid.billing.zippostalcode")),
+				"Shipping info - zip mismatch");
 
 		log.info("Click confirm to place the order");
 		confirmOrderPage.clickConfirm();
-		
-		Assert.assertTrue(confirmOrderPage.getOrderSuccessMessage().contains("Your order has been successfully processed"));
+
+		Assert.assertTrue(
+				confirmOrderPage.getOrderSuccessMessage().contains("Your order has been successfully processed"));
 
 	}
 

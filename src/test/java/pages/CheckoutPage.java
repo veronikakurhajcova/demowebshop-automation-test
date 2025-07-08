@@ -1,13 +1,10 @@
 package pages;
 
-import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import demowebshop.base.BasePage;
 
@@ -41,6 +38,9 @@ public class CheckoutPage extends BasePage {
 	
 	@FindBy(id="BillingNewAddress_PhoneNumber")
 	private WebElement phoneNumberInBillingAddress;
+	
+	@FindBy(id = "billing-address-select")
+	private WebElement prefilledBillingAddressSelect;
 	
 	@FindBy(xpath="//input[@type='button'][@title='Continue']")
 	private WebElement continueButtonInBillingAddress;
@@ -115,15 +115,25 @@ public class CheckoutPage extends BasePage {
 	    return phoneNumberInBillingAddress.getAttribute("value");
 	}
 	
-	public void waitForBillingAddressSection1() {
-	    try {
-	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("loading-overlay")));
-	    } catch (Exception e) {
-	       
-	    }
-	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("billing-address-form")));
+	public void selectPrefilledBillingAddress() {
+		
+		Select select = new Select(prefilledBillingAddressSelect);
+		select.selectByIndex(0);
+		
 	}
+	
+	public String getSelectedBillingAddressText() {
+		
+	    Select select = new Select(prefilledBillingAddressSelect);
+	    return select.getFirstSelectedOption().getText().trim();
+	}
+
+	public boolean isSelectedBillingAddressContaining(String expectedPartialText) {
+	    Select select = new Select(prefilledBillingAddressSelect);
+	    String selectedText = select.getFirstSelectedOption().getText();
+	    return selectedText.contains(expectedPartialText);
+	}
+
 	
 	public void waitForContinueButton() {
 	    wait.until(ExpectedConditions.elementToBeClickable(continueButtonInBillingAddress));

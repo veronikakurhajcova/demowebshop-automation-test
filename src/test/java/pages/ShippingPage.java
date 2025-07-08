@@ -9,43 +9,53 @@ import org.openqa.selenium.support.ui.Select;
 
 import demowebshop.base.BasePage;
 
-public class ShippingPage extends BasePage  {
-	
+public class ShippingPage extends BasePage {
+
 	public ShippingPage() {
-		
+
 		super();
-		
+
 	}
-	
+
 	// Elements
-	
+
 	@FindBy(id = "shipping-address-select")
-    private WebElement shippingAddressSelect;
+	private WebElement shippingAddressSelect;
 
-    @FindBy(id = "shipping-buttons-container")
-    private WebElement shippingButtonsContainer;
+	@FindBy(id = "shipping-buttons-container")
+	private WebElement shippingButtonsContainer;
 
-    @FindBy(xpath = "//input[@onclick='Shipping.save()']")
-    private WebElement continueButton;
-	
+	@FindBy(xpath = "//input[@onclick='Shipping.save()']")
+	private WebElement continueButton;
+
 	// Actions
 
-    public void waitForShippingSection() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("checkout-step-shipping")));
-    }
+	public void waitForShippingSection() {
 
-    public String getSelectedShippingAddress() {
-        waitForShippingSection();
-        wait.until(ExpectedConditions.visibilityOf(shippingAddressSelect));
-        Select select = new Select(shippingAddressSelect);
-        return select.getFirstSelectedOption().getText();
-    }
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("checkout-step-shipping")));
+	}
 
-    public void clickContinue() {
-    	 wait.until(ExpectedConditions.visibilityOf(continueButton));
-    	    scrollToElement(continueButton);
-    	    JavascriptExecutor js = (JavascriptExecutor) driver;
-    	    js.executeScript("arguments[0].click();", continueButton);
-    	    wait.until(ExpectedConditions.invisibilityOf(continueButton));
-    }
+	public String getSelectedShippingAddressText() {
+
+		Select select = new Select(shippingAddressSelect);
+		return select.getFirstSelectedOption().getText().trim();
+
+	}
+
+	public boolean isSelectedShippingAddressContaining(String expectedPartialText) {
+
+		Select select = new Select(shippingAddressSelect);
+		String selectedText = select.getFirstSelectedOption().getText();
+		return selectedText.contains(expectedPartialText);
+
+	}
+
+	public void clickContinue() {
+
+		wait.until(ExpectedConditions.visibilityOf(continueButton));
+		scrollToElement(continueButton);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", continueButton);
+		wait.until(ExpectedConditions.invisibilityOf(continueButton));
+	}
 }
