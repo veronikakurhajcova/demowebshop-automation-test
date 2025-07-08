@@ -1,5 +1,7 @@
 package pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
@@ -9,10 +11,12 @@ import demowebshop.base.BasePage;
 public class ShoppingCartPage extends BasePage {
 	
 	DashboardPage dashboardPage = new DashboardPage();
+	JavascriptExecutor js;
 
 	public ShoppingCartPage() {
 
 		super();
+		this.js = (JavascriptExecutor) driver;
 	}
 
 	// Elements
@@ -122,12 +126,19 @@ public class ShoppingCartPage extends BasePage {
 	// Estimate shipping methods
 
 	public void selectCountry(String nameOfCountry) {
-		waitForElementToBeVisible(countrySelect);
-		waitForElementToBeClickable(countrySelect);
-		Select select = new Select(countrySelect);
-		select.selectByVisibleText(nameOfCountry);
+	    waitForElementToBeVisibleByLocator(By.id("CountryId"));
+	    WebElement countrySelect = driver.findElement(By.id("CountryId"));
+	    Select select = new Select(countrySelect);
+	    select.selectByVisibleText(nameOfCountry);
+	   
 
 	}
+	
+	public WebElement getCountrySelect() {
+	    return countrySelect;
+	}
+
+
 	
 	public boolean selectedCountryIsDisplayed(String expectedCountry) {
 	    Select select = new Select(countrySelect);
@@ -207,6 +218,7 @@ public class ShoppingCartPage extends BasePage {
 	
 	// Clean cart method
 	public void clearShoppingCart() {
+		
 	    if (isElementPresent(removeProductFromCartCheckbox)) {
 	        if (!removeProductFromCartCheckbox.isSelected()) {
 	            waitForElementToBeClickable(removeProductFromCartCheckbox);

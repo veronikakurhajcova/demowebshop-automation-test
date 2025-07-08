@@ -47,71 +47,97 @@ public class CheckoutPage extends BasePage {
 
 	//Actions
 	public String getBillingFirstName() {
+		
 	    return firstNameInBillingAddress.getAttribute("value");
+	    
 	}
 	
 	public String getBillingLastName() {
+		
 		return lastNameInBillingAddress.getAttribute("value");
+		
 	}
 	
 	public String getBillingEmail() {
+		
 		return emailInBillingAddress.getAttribute("value");
+		
 	}
 	
 	public void waitForBillingAddressSection() {
+		
 	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("BillingNewAddress_FirstName")));
+	    
 	}
 	
 	public void selectBillingCountry(String countryName) {
+		
 		waitForBillingAddressSection(); 
 	    wait.until(ExpectedConditions.visibilityOf(countryInBillingAddress));
 	    Select select = new Select(countryInBillingAddress);
 	    select.selectByVisibleText(countryName);
+	    
 	}
 	
 	public void enterBillingCity(String city) {
+		
 		waitForElementToBeClickable(cityInBillingAddress);
 		sendKeys(cityInBillingAddress, city);
+		
 	}
 	
 	public void enterBillingAddress1(String address) {
+		
 		sendKeys(addressInBillingAddress, address);
+		
 	}
 	
 	public void enterBillingZipPostalCode(String postalZipCode) {
+		
 		waitForElementToBeClickable(zipPostalCodeBillingAddress);
 		sendKeys(zipPostalCodeBillingAddress, postalZipCode);
+		
 	}
 	
 	public void enterBillingPhoneNumber(String phoneNumber) {
+		
 		waitForElementToBeClickable(phoneNumberInBillingAddress);
 		sendKeys(phoneNumberInBillingAddress, phoneNumber);
+		
 	}
 	
 	public void clickBillingContinueButton() {
+		
 		waitForElementToBeClickable(continueButtonInBillingAddress);
 	    click(continueButtonInBillingAddress);
 	    wait.until(ExpectedConditions.invisibilityOf(continueButtonInBillingAddress));
+	    
 	}
 	
 	public String getSelectedBillingCountry() {
+		
 	    Select select = new Select(countryInBillingAddress);
 	    return select.getFirstSelectedOption().getText();
+	    
 	}
 
 	public String getBillingCity() {
+		
 	    return cityInBillingAddress.getAttribute("value");
 	}
 
 	public String getBillingAddress1() {
+		
 	    return addressInBillingAddress.getAttribute("value");
 	}
 
 	public String getBillingZipPostalCode() {
+		
 	    return zipPostalCodeBillingAddress.getAttribute("value");
 	}
 
 	public String getBillingPhoneNumber() {
+		
 	    return phoneNumberInBillingAddress.getAttribute("value");
 	}
 	
@@ -129,6 +155,7 @@ public class CheckoutPage extends BasePage {
 	}
 
 	public boolean isSelectedBillingAddressContaining(String expectedPartialText) {
+		
 	    Select select = new Select(prefilledBillingAddressSelect);
 	    String selectedText = select.getFirstSelectedOption().getText();
 	    return selectedText.contains(expectedPartialText);
@@ -136,6 +163,7 @@ public class CheckoutPage extends BasePage {
 
 	
 	public void waitForContinueButton() {
+		
 	    wait.until(ExpectedConditions.elementToBeClickable(continueButtonInBillingAddress));
 	}
 

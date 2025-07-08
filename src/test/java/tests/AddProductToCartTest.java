@@ -51,7 +51,7 @@ public class AddProductToCartTest extends BaseTest {
 		
 		log.info("Add book to cart");
 		booksPage.addBookWithId13ToCart();
-		booksPage.verifySuccessBarNotificationAfterAddProductToCart(booksReader.getProperty("cart.add.success.bar.notification"));
+		booksPage.verifySuccessBarNotificationAfterAddProductToCart(messageReader.getProperty("cart.add.success.bar.notification"));
 	
 		log.info("Verify quantity in cart");
 		int quantity = headerPage.getCartQuantity();

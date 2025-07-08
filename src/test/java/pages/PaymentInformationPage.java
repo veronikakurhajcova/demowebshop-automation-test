@@ -21,6 +21,9 @@ public class PaymentInformationPage extends BasePage {
 
     @FindBy(id = "checkout-payment-info-load")
     private WebElement paymentInfoContent;
+    
+    @FindBy(xpath="//div[@id='checkout-payment-info-load']//div[contains(@class,'payment-info')]//p")
+    private WebElement paymentInfoTable;
 
     @FindBy(xpath = "//input[contains(@class,'payment-info-next-step-button')]")
     private WebElement continueButton;
@@ -28,16 +31,27 @@ public class PaymentInformationPage extends BasePage {
     // Actions
 
     public void waitForPaymentInfoSection() {
+    	
         wait.until(ExpectedConditions.visibilityOf(paymentInfoSection));
         wait.until(ExpectedConditions.visibilityOf(paymentInfoContent));
     }
 
     public boolean isPaymentInfoDisplayed() {
-        waitForPaymentInfoSection();
-        return paymentInfoContent.getText().contains("Payment is not required");
+    	
+    	waitForElementToBeVisible(paymentInfoTable);
+        return paymentInfoTable.isDisplayed();
+        
     }
 
+    public String getPaymentInfoText() {
+    	
+    	waitForElementToBeVisible(paymentInfoTable);
+    	return paymentInfoTable.getText();
+    	
+    }
+    
     public void clickContinue() {
+    	
         wait.until(ExpectedConditions.elementToBeClickable(continueButton));
         continueButton.click();
         wait.until(ExpectedConditions.invisibilityOf(continueButton));

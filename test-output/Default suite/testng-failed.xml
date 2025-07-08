@@ -5,7 +5,7 @@
     <classes>
       <class name="tests.ShoppingE2EFlowTest">
         <methods>
-          <include name="shoppingE2EFlow"/>
+          <include name="testBillingInformation"/>
           <include name="setup"/>
           <include name="tearDown"/>
         </methods>

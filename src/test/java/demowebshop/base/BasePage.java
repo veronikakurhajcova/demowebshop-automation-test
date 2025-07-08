@@ -2,6 +2,7 @@ package demowebshop.base;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
@@ -62,6 +63,12 @@ public class BasePage extends BaseTest {
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 	
+	public void waitForElementToBeVisibleByLocator(By locator) {
+		
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
+
 	public boolean isElementPresent(WebElement element) {
 		
 	    try {
