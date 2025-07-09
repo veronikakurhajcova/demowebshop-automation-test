@@ -38,7 +38,6 @@ public class Utils {
 	public static String generateRandomEmail() {
 		
 	    return "testuser" + System.currentTimeMillis() + "@mail.com";
-
 		
 	}
 }

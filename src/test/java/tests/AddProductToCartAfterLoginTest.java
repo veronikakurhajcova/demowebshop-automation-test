@@ -6,6 +6,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import demowebshop.base.BaseTest;
+import helpers.TestFlowHelper;
 import pages.BooksPage;
 import pages.DashboardPage;
 import pages.HeaderPage;
@@ -67,8 +68,9 @@ public class AddProductToCartAfterLoginTest extends BaseTest {
 	@AfterMethod
 	public void tearDown() {
 
-		log.info("Closing the browser after logout completion.");
-		quitDriver();
+		 TestFlowHelper.logout(dashboardPage, indexPage, configReader);
+		 log.info("Closing the browser after test completion.");
+		 quitDriver();
 		
 	}
 

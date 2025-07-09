@@ -9,11 +9,14 @@ import org.testng.annotations.Test;
 
 import demowebshop.base.BaseTest;
 import demowebshop.utils.PropertiesReader;
+import helpers.TestFlowHelper;
 import pages.DashboardPage;
 import pages.HeaderPage;
 import pages.IndexPage;
 import pages.RegisterPage;
 import utils.RetryAnalyzer;
+import utils.Utils;
+
 
 public class RegisterValidTest extends BaseTest {
 
@@ -21,10 +24,13 @@ public class RegisterValidTest extends BaseTest {
 	IndexPage indexPage;
 	RegisterPage registerPage;
 	DashboardPage dashboardPage;
+	
+	String randomEmail;
 
 	public RegisterValidTest() {
 		
 		super();
+		
 		try {
 			testDataReader = new PropertiesReader("src/test/resources/testdata/validUser.properties");
 		} catch (IOException e) {
@@ -37,12 +43,15 @@ public class RegisterValidTest extends BaseTest {
 	public void setup() {
 		
 		// Initialize the browser and navigate to the URL
+		
 		log.info("Initializing browser and navigating to the URL.");
 		initializeBrowser();
 		headerPage = new HeaderPage();
 		indexPage = new IndexPage();
 		registerPage = new RegisterPage();
 		dashboardPage = new DashboardPage();
+		
+		randomEmail = Utils.generateRandomEmail();
 	}
 
 	@Test(description = "Valid user registration with correct data", retryAnalyzer = RetryAnalyzer.class)
@@ -53,7 +62,7 @@ public class RegisterValidTest extends BaseTest {
 
 		log.info("Filling in registration form with valid data.");
 		registerPage.registerUser(testDataReader.getProperty("valid.firstname"),
-				testDataReader.getProperty("valid.lastname"), testDataReader.getProperty("valid.email"),
+				testDataReader.getProperty("valid.lastname"), randomEmail,
 				testDataReader.getProperty("valid.password"));
 
 		log.info("Verifying registration result message and URL.");
@@ -67,7 +76,7 @@ public class RegisterValidTest extends BaseTest {
 		Assert.assertTrue(registerPage.isRegisteredCustomerInfoDisplayed(),
 				"Registered customer info is not displayed.");
 		
-		Assert.assertEquals(registerPage.getRegisteredCustomerInfo(), testDataReader.getProperty("valid.email"),
+		Assert.assertEquals(registerPage.getRegisteredCustomerInfo(), randomEmail,
 				"Registered customer info does not match expected.");
 		
 		log.info("Registration completed successfully with expected data.");
@@ -84,15 +93,7 @@ public class RegisterValidTest extends BaseTest {
 		
 		// logout user after registration
 		
-		 try {
-		        dashboardPage.clickLogoutButton();
-		        log.info("User logged out successfully.");
-		        
-		        Assert.assertEquals(indexPage.getCurrentUrl(), configReader.getProperty("url"), 
-		                "URL after logout does not match the base URL.");
-		    } catch (Exception e) {
-		        log.warn("Logout was not possible. Detail: " + e.getMessage());
-		    }
+		 TestFlowHelper.logout(dashboardPage, indexPage, configReader);
 		 
 		 log.info("Closing the browser after test completion.");
 		 quitDriver();

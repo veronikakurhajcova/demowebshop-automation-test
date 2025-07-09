@@ -6,20 +6,21 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import demowebshop.base.BaseTest;
+import helpers.TestFlowHelper;
 import pages.DashboardPage;
 import pages.HeaderPage;
 import pages.IndexPage;
 import pages.LoginPage;
 import utils.RetryAnalyzer;
 
-public class LoginFunctionalityTest extends BaseTest {
+public class LoginValidTest extends BaseTest {
 
 	IndexPage indexPage;
 	HeaderPage headerPage;
 	LoginPage loginPage;
 	DashboardPage dashboardPage;
 
-	public LoginFunctionalityTest() {
+	public LoginValidTest() {
 
 		super();
 
@@ -45,7 +46,7 @@ public class LoginFunctionalityTest extends BaseTest {
 		log.info("Filling login form with valid data");
 		loginPage.loginRegisteredUser(testDataReader.getProperty("valid.email"),
 				testDataReader.getProperty("valid.password"));
-		
+
 		Assert.assertEquals(dashboardPage.getCurrentUrl(), configReader.getProperty("url"),
 				"Current URL does not match dashboard URL after login");
 
@@ -56,19 +57,12 @@ public class LoginFunctionalityTest extends BaseTest {
 
 	@AfterMethod
 	public void logoutLoggedUser() {
-		// logout user after login
-		 try {
-		        dashboardPage.clickLogoutButton();
-		        log.info("User logged out successfully.");
 
-		        Assert.assertEquals(indexPage.getCurrentUrl(), dashboardReader.getProperty("dashboard.url"),
-		                "URL after logout does not match the base URL.");
-		    } catch (Exception e) {
-		        log.warn("Logout was not possible: " + e.getMessage());
-		    } finally {
-		        log.info("Closing the browser after logout completion.");
-		        quitDriver();
-		    }
+		TestFlowHelper.logout(dashboardPage, indexPage, configReader);
+
+		log.info("Closing the browser after logout completion.");
+		quitDriver();
+
 	}
 
 }

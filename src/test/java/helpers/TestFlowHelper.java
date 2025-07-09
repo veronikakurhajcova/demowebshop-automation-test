@@ -1,5 +1,7 @@
 package helpers;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 
 import demowebshop.utils.PropertiesReader;
@@ -7,6 +9,7 @@ import pages.BooksPage;
 import pages.CheckoutPage;
 import pages.DashboardPage;
 import pages.HeaderPage;
+import pages.IndexPage;
 import pages.LoginPage;
 import pages.PaymentInformationPage;
 import pages.PaymentMethodPage;
@@ -18,6 +21,7 @@ import utils.Utils;
 
 public class TestFlowHelper {
 
+	private static final Logger log = LogManager.getLogger(TestFlowHelper.class);
 	public static String registeredUserEmail;
 
 	public static void registerUserAndAddBookToCart(HeaderPage headerPage, RegisterPage registerPage,
@@ -129,6 +133,23 @@ public class TestFlowHelper {
 	        Assert.assertEquals(paymentInformationPage.getPaymentInfoText(), messageReader.getProperty("payment.information.cod"));
 	        paymentInformationPage.clickContinue();
 	    }
+	    
+	    public static void logout(DashboardPage dashboardPage, IndexPage indexPage, PropertiesReader configReader) {
+			
+			// logout user after registration
+			
+			 try {
+			        dashboardPage.clickLogoutButton();
+			        log.info("User logged out successfully.");
+			        
+			        Assert.assertEquals(indexPage.getCurrentUrl(), configReader.getProperty("url"), 
+			                "URL after logout does not match the base URL.");
+			    } catch (Exception e) {
+			        log.warn("Logout was not possible. Detail: " + e.getMessage());
+			    }
+	    }
+
+			 
 
 
 }

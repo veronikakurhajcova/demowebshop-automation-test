@@ -16,6 +16,7 @@ import pages.CompletedCheckoutPage;
 import pages.ConfirmOrderPage;
 import pages.DashboardPage;
 import pages.HeaderPage;
+import pages.IndexPage;
 import pages.PaymentInformationPage;
 import pages.PaymentMethodPage;
 import pages.RegisterPage;
@@ -27,6 +28,7 @@ import utils.RetryAnalyzer;
 public class EndToEndShoppingFlowAfterRegistrationTest extends BaseTest {
 
 	HeaderPage headerPage;
+	IndexPage indexPage;
 	RegisterPage registerPage;
 	DashboardPage dashboardPage;
 	BooksPage booksPage;
@@ -64,6 +66,7 @@ public class EndToEndShoppingFlowAfterRegistrationTest extends BaseTest {
 		initializeBrowser();
 
 		headerPage = new HeaderPage();
+		indexPage = new IndexPage();
 		registerPage = new RegisterPage();
 		dashboardPage = new DashboardPage();
 		booksPage = new BooksPage();
@@ -310,9 +313,11 @@ public class EndToEndShoppingFlowAfterRegistrationTest extends BaseTest {
 	
 	@AfterMethod
 	public void tearDown() {
-
-		log.info("Closing the browser after logout completion.");
-		quitDriver();
+		
+		 TestFlowHelper.logout(dashboardPage, indexPage, configReader);
+		 
+		 log.info("Closing the browser after test completion.");
+		 quitDriver();
 
 	}
 	
