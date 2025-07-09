@@ -159,12 +159,19 @@ public class CheckoutPage extends BasePage {
 	    Select select = new Select(prefilledBillingAddressSelect);
 	    String selectedText = select.getFirstSelectedOption().getText();
 	    return selectedText.contains(expectedPartialText);
+	
 	}
-
 	
 	public void waitForContinueButton() {
 		
 	    wait.until(ExpectedConditions.elementToBeClickable(continueButtonInBillingAddress));
+	
+	}
+	
+
+	public boolean isBillingCountrySelectDisplayed() {
+		
+		return countryInBillingAddress.isDisplayed();
 	}
 
 }

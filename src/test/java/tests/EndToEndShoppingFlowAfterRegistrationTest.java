@@ -1,29 +1,33 @@
 package tests;
 
+import java.io.IOException;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import demowebshop.base.BaseTest;
+import demowebshop.utils.PropertiesReader;
+import helpers.TestFlowHelper;
 import pages.BooksPage;
 import pages.CheckoutPage;
 import pages.CompletedCheckoutPage;
 import pages.ConfirmOrderPage;
 import pages.DashboardPage;
 import pages.HeaderPage;
-import pages.LoginPage;
 import pages.PaymentInformationPage;
 import pages.PaymentMethodPage;
+import pages.RegisterPage;
 import pages.ShippingMethodPage;
 import pages.ShippingPage;
 import pages.ShoppingCartPage;
 import utils.RetryAnalyzer;
 
-public class ShoppingE2EFlowTest extends BaseTest {
+public class EndToEndShoppingFlowAfterRegistrationTest extends BaseTest {
 
 	HeaderPage headerPage;
-	LoginPage loginPage;
+	RegisterPage registerPage;
 	DashboardPage dashboardPage;
 	BooksPage booksPage;
 	ShoppingCartPage shoppingCartPage;
@@ -42,9 +46,15 @@ public class ShoppingE2EFlowTest extends BaseTest {
 	double expectedShipping;
 	double expectedTax;
 
-	public ShoppingE2EFlowTest() {
+	public EndToEndShoppingFlowAfterRegistrationTest() {
 
 		super();
+		try {
+			testDataReader = new PropertiesReader("src/test/resources/testdata/validUser.properties");
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new RuntimeException("validUser.properties file not found or could not be loaded", e);
+		}
 
 	}
 
@@ -54,7 +64,7 @@ public class ShoppingE2EFlowTest extends BaseTest {
 		initializeBrowser();
 
 		headerPage = new HeaderPage();
-		loginPage = new LoginPage();
+		registerPage = new RegisterPage();
 		dashboardPage = new DashboardPage();
 		booksPage = new BooksPage();
 		shoppingCartPage = new ShoppingCartPage();
@@ -73,21 +83,13 @@ public class ShoppingE2EFlowTest extends BaseTest {
 		expectedShipping = Double.parseDouble(cartReader.getProperty("cart.product.shipping.price"));
 		expectedTax = Double.parseDouble(cartReader.getProperty("cart.product.tax"));
 
-		log.info("Login and prepare cart");
-		headerPage.clickLoginLink();
-		loginPage.loginRegisteredUser(testDataReader.getProperty("valid.email"),
-				testDataReader.getProperty("valid.password"));
-		headerPage.clickOnShoppingCartLink();
-		shoppingCartPage.clearShoppingCart();
-		dashboardPage.clickOnBooksLink();
-		booksPage.addBookWithId13ToCart();
-		booksPage.verifySuccessBarNotificationAfterAddProductToCart(
-				messageReader.getProperty("cart.add.success.bar.notification"));
+		TestFlowHelper.registerUserAndAddBookToCart(headerPage, registerPage, dashboardPage, booksPage, testDataReader,
+				messageReader);
 
 	}
 
-	@Test(description = "Check shopping cart details", retryAnalyzer = RetryAnalyzer.class)
-	public void testShoppingCartDetails() {
+	@Test(description = "Check shopping cart details after user registration", retryAnalyzer = RetryAnalyzer.class)
+	public void shouldDisplayCorrectProductDetailsAfterRegistration() {
 
 		log.info("Click on shopping cart link");
 		headerPage.clickOnShoppingCartLink();
@@ -105,8 +107,8 @@ public class ShoppingE2EFlowTest extends BaseTest {
 
 	}
 
-	@Test(description = "Estimate shipping and check totals", retryAnalyzer = RetryAnalyzer.class)
-	public void testShippingAndTotals() {
+	@Test(description = "Estimate shipping and check totals after user registration", retryAnalyzer = RetryAnalyzer.class)
+	public void shouldEstimateShippingAndDisplayCorrectTotalsAfterRegistration() {
 
 		headerPage.clickOnShoppingCartLink();
 		log.info("Select country");
@@ -134,14 +136,6 @@ public class ShoppingE2EFlowTest extends BaseTest {
 				"Product tax does not match");
 		Assert.assertEquals(shoppingCartPage.getTotalPriceInShoppingCartSummary(), expectedTotal, 0.01,
 				"Product subtotal does not match");
-	}
-
-	@Test(description = "Submit order and check checkout URL", retryAnalyzer = RetryAnalyzer.class)
-	public void testSubmitOrderAndCheckoutUrl() {
-
-		headerPage.clickOnShoppingCartLink();
-		shoppingCartPage.selectCountry(cartReader.getProperty("cart.country"));
-		shoppingCartPage.clickEstimateShippingButton();
 
 		log.info("Submit order with checkout button");
 		shoppingCartPage.clickTermsOfService();
@@ -152,34 +146,47 @@ public class ShoppingE2EFlowTest extends BaseTest {
 
 	}
 
-	@Test(description = "Billing information", retryAnalyzer = RetryAnalyzer.class)
-	public void testBillingInformation() {
+	@Test(description = "Billing information after user registration", retryAnalyzer = RetryAnalyzer.class)
+	public void shouldVerifyPrefilledBillingFieldsAndEnterRemainingInformationAfterRegistration() {
+		
+		// Prepare and submit cart
+		TestFlowHelper.proceedToShoppingCartAndEstimateShipping(headerPage, shoppingCartPage, cartReader);
+		
+		//  Verify prefilled billing fields
+		
+		log.info("Check prefilled information in billing address");
+		Assert.assertEquals(checkoutPage.getBillingFirstName(), cartReader.getProperty("valid.firstname"),
+				"Pre-filled FirstName does not match with registered user firstname");
 
-		headerPage.clickOnShoppingCartLink();
-		shoppingCartPage.selectCountry(cartReader.getProperty("cart.country"));
-		shoppingCartPage.clickEstimateShippingButton();
-		shoppingCartPage.clickTermsOfService();
-		shoppingCartPage.submitOrder();
+		Assert.assertEquals(checkoutPage.getBillingLastName(), cartReader.getProperty("valid.lastname"),
+				"Pre-filled lastname does not match with registered user lastname");
 
-		checkoutPage.selectPrefilledBillingAddress();
-		String actualBillingAddressText = checkoutPage.getSelectedBillingAddressText();
-		Assert.assertTrue(checkoutPage.isSelectedBillingAddressContaining(cartReader.getProperty("valid.lastname")),
-				"Billing address mismatch. Actual: " + actualBillingAddressText);
+		Assert.assertEquals(checkoutPage.getBillingEmail(), TestFlowHelper.registeredUserEmail,
+				"Pre-filled email does not match with registered user email");
+		
+		// Fill in rest of billing info
+		
+		checkoutPage.selectBillingCountry(cartReader.getProperty("valid.billing.country"));
+		Assert.assertEquals(checkoutPage.getSelectedBillingCountry(), cartReader.getProperty("valid.billing.country"),
+			    "Selected billing country does not match");
 
+		checkoutPage.enterBillingCity(cartReader.getProperty("valid.billing.city"));
+		checkoutPage.enterBillingAddress1(cartReader.getProperty("valid.billing.address1"));
+		checkoutPage.enterBillingZipPostalCode(cartReader.getProperty("valid.billing.zippostalcode"));
+		checkoutPage.enterBillingPhoneNumber(cartReader.getProperty("valid.billing.phonenumber"));
+		
 		checkoutPage.clickBillingContinueButton();
-
+		
 	}
+	
+	@Test(description = "Shipping information after user registration", retryAnalyzer = RetryAnalyzer.class)
+	public void verifyPrefilledShippingInformationAfterRegistration() {
 
-	@Test(description = "Shipping information", retryAnalyzer = RetryAnalyzer.class)
-	public void testShippingInformation() {
+		// Prepare and submit cart
 
-		headerPage.clickOnShoppingCartLink();
-		shoppingCartPage.selectCountry(cartReader.getProperty("cart.country"));
-		shoppingCartPage.clickEstimateShippingButton();
-		shoppingCartPage.clickTermsOfService();
-		shoppingCartPage.submitOrder();
-		checkoutPage.clickBillingContinueButton();
-
+		TestFlowHelper.proceedToShoppingCartAndEstimateShipping(headerPage, shoppingCartPage, cartReader);
+		TestFlowHelper.fillBillingInformation(checkoutPage, cartReader);
+				
 		String actualShippingAddressText = shippingPage.getSelectedShippingAddressText();
 		Assert.assertTrue(shippingPage.isSelectedShippingAddressContaining(cartReader.getProperty("valid.lastname")),
 				"Shipping address mismatch. Actual: " + actualShippingAddressText);
@@ -187,17 +194,13 @@ public class ShoppingE2EFlowTest extends BaseTest {
 		shippingPage.clickContinue();
 
 	}
+	
+	@Test(description = "User selects shipping method", retryAnalyzer = RetryAnalyzer.class)
+	public void selectShippingMethodAfterRegistration() {
 
-	@Test(description = "Shipping method selection", retryAnalyzer = RetryAnalyzer.class)
-	public void testShippingMethodSelection() {
-
-		headerPage.clickOnShoppingCartLink();
-		shoppingCartPage.selectCountry(cartReader.getProperty("cart.country"));
-		shoppingCartPage.clickEstimateShippingButton();
-		shoppingCartPage.clickTermsOfService();
-		shoppingCartPage.submitOrder();
-		checkoutPage.clickBillingContinueButton();
-		shippingPage.clickContinue();
+		TestFlowHelper.proceedToShoppingCartAndEstimateShipping(headerPage, shoppingCartPage, cartReader);
+		TestFlowHelper.fillBillingInformation(checkoutPage, cartReader);
+		TestFlowHelper.proceedToShippingMethod(shippingPage);
 
 		shippingMethodPage.waitForShippingMethodSection();
 		Assert.assertTrue(shippingMethodPage.isShippingMethodDisplayed(), "Shipping method not displayed");
@@ -208,38 +211,31 @@ public class ShoppingE2EFlowTest extends BaseTest {
 		shippingMethodPage.clickContinue();
 
 	}
+	
+	@Test(description = "Payment method selection after user registration", retryAnalyzer = RetryAnalyzer.class)
+	public void selectPaymentMethodAfterRegistration() {
 
-	@Test(description = "Payment method selection", retryAnalyzer = RetryAnalyzer.class)
-	public void testPaymentMethodSelection() {
-
-		headerPage.clickOnShoppingCartLink();
-		shoppingCartPage.selectCountry(cartReader.getProperty("cart.country"));
-		shoppingCartPage.clickEstimateShippingButton();
-		shoppingCartPage.clickTermsOfService();
-		shoppingCartPage.submitOrder();
-		checkoutPage.clickBillingContinueButton();
-		shippingPage.clickContinue();
-		shippingMethodPage.clickContinue();
-
+		TestFlowHelper.proceedToShoppingCartAndEstimateShipping(headerPage, shoppingCartPage, cartReader);
+		TestFlowHelper.fillBillingInformation(checkoutPage, cartReader);
+		TestFlowHelper.proceedToShippingMethod(shippingPage);
+		TestFlowHelper.proceedToPaymentMethod(shippingMethodPage);
+		
 		paymentMethodPage.selectCashOnDeliveryPaymentMethod();
 		Assert.assertTrue(paymentMethodPage.isCasOnDeliveryPaymentMethodSelected(), "COD payment method not selected");
 
 		paymentMethodPage.clickContinue();
 
 	}
+	
+	@Test(description = "Verify payment info content", retryAnalyzer = RetryAnalyzer.class)
+	public void verifyPaymentInformationAfterRegistration() {
 
-	@Test(description = "Payment information verification", retryAnalyzer = RetryAnalyzer.class)
-	public void testPaymentInformation() {
+		TestFlowHelper.proceedToShoppingCartAndEstimateShipping(headerPage, shoppingCartPage, cartReader);
+		TestFlowHelper.fillBillingInformation(checkoutPage, cartReader);
+		TestFlowHelper.proceedToShippingMethod(shippingPage);
+		TestFlowHelper.proceedToPaymentMethod(shippingMethodPage);
+		TestFlowHelper.proceedToPaymentInformation(paymentMethodPage);
 
-		headerPage.clickOnShoppingCartLink();
-		shoppingCartPage.selectCountry(cartReader.getProperty("cart.country"));
-		shoppingCartPage.clickEstimateShippingButton();
-		shoppingCartPage.clickTermsOfService();
-		shoppingCartPage.submitOrder();
-		checkoutPage.clickBillingContinueButton();
-		shippingPage.clickContinue();
-		shippingMethodPage.clickContinue();
-		paymentMethodPage.clickContinue();
 
 		Assert.assertTrue(paymentInformationPage.isPaymentInfoDisplayed(), "Payment info not displayed");
 		Assert.assertEquals(paymentInformationPage.getPaymentInfoText(),
@@ -248,20 +244,16 @@ public class ShoppingE2EFlowTest extends BaseTest {
 		paymentInformationPage.clickContinue();
 
 	}
+	
+	@Test(description = "Confirm order details content", retryAnalyzer = RetryAnalyzer.class)
+	public void checkConfirmOrderDetailsAfterRegistration() {
 
-	@Test(description = "Confirm order details", retryAnalyzer = RetryAnalyzer.class)
-	public void testConfirmOrderDetails() {
-
-		headerPage.clickOnShoppingCartLink();
-		shoppingCartPage.selectCountry(cartReader.getProperty("cart.country"));
-		shoppingCartPage.clickEstimateShippingButton();
-		shoppingCartPage.clickTermsOfService();
-		shoppingCartPage.submitOrder();
-		checkoutPage.clickBillingContinueButton();
-		shippingPage.clickContinue();
-		shippingMethodPage.clickContinue();
-		paymentMethodPage.clickContinue();
-		paymentInformationPage.clickContinue();
+		TestFlowHelper.proceedToShoppingCartAndEstimateShipping(headerPage, shoppingCartPage, cartReader);
+		TestFlowHelper.fillBillingInformation(checkoutPage, cartReader);
+		TestFlowHelper.proceedToShippingMethod(shippingPage);
+		TestFlowHelper.proceedToPaymentMethod(shippingMethodPage);
+		TestFlowHelper.proceedToPaymentInformation(paymentMethodPage);
+		TestFlowHelper.proceedToConfirmOrder(paymentInformationPage);
 
 		confirmOrderPage.waitForConfirmOrderSection();
 
@@ -290,20 +282,17 @@ public class ShoppingE2EFlowTest extends BaseTest {
 		confirmOrderPage.clickConfirm();
 
 	}
+	
+	@Test(description = "Order completion after user registration", retryAnalyzer = RetryAnalyzer.class)
+	public void verifyOrderCompletionAfterRegistration() {
 
-	@Test(description = "Order completion", retryAnalyzer = RetryAnalyzer.class)
-	public void testOrderCompletion() {
-
-		headerPage.clickOnShoppingCartLink();
-		shoppingCartPage.selectCountry(cartReader.getProperty("cart.country"));
-		shoppingCartPage.clickEstimateShippingButton();
-		shoppingCartPage.clickTermsOfService();
-		shoppingCartPage.submitOrder();
-		checkoutPage.clickBillingContinueButton();
-		shippingPage.clickContinue();
-		shippingMethodPage.clickContinue();
-		paymentMethodPage.clickContinue();
-		paymentInformationPage.clickContinue();
+		TestFlowHelper.proceedToShoppingCartAndEstimateShipping(headerPage, shoppingCartPage, cartReader);
+		TestFlowHelper.fillBillingInformation(checkoutPage, cartReader);
+		TestFlowHelper.proceedToShippingMethod(shippingPage);
+		TestFlowHelper.proceedToPaymentMethod(shippingMethodPage);
+		TestFlowHelper.proceedToPaymentInformation(paymentMethodPage);
+		TestFlowHelper.proceedToConfirmOrder(paymentInformationPage);
+		confirmOrderPage.waitForConfirmOrderSection();
 		confirmOrderPage.clickConfirm();
 
 		Assert.assertTrue(completedCheckoutPage.isOrderSuccessMessageDisplayed(),
@@ -318,7 +307,7 @@ public class ShoppingE2EFlowTest extends BaseTest {
 		Assert.assertTrue(completedCheckoutPage.isSectionOrderCompletedDetailsLinkDisplayed(),
 				"Order details link not displayed");
 	}
-
+	
 	@AfterMethod
 	public void tearDown() {
 
@@ -326,4 +315,7 @@ public class ShoppingE2EFlowTest extends BaseTest {
 		quitDriver();
 
 	}
+	
+	
+
 }

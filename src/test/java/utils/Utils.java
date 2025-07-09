@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 public class Utils {
 	
 	public static String takeScreenshot(WebDriver driver, String testName) {
+		
 	    TakesScreenshot ts = (TakesScreenshot) driver;
 	    File source = ts.getScreenshotAs(OutputType.FILE);
 
@@ -32,5 +33,12 @@ public class Utils {
 	    }
 
 	    return "screenshots/" + fileName; 
+	}
+	
+	public static String generateRandomEmail() {
+		
+	    return "testuser" + System.currentTimeMillis() + "@mail.com";
+
+		
 	}
 }

@@ -10,6 +10,7 @@ public class ExtentManager {
 	private static ExtentReports extent;
 
 	public synchronized static ExtentReports getExtentReports() {
+		
 		if (extent == null) {
 			String reportDir = "test-output";
 			File reportFolder = new File(reportDir);
@@ -27,8 +28,11 @@ public class ExtentManager {
 			extent.setSystemInfo("Tester", "Veronika");
 			extent.setSystemInfo("Operating System", System.getProperty("os.name"));
 			extent.setSystemInfo("Java Version", System.getProperty("java.version"));
+			
 		}
+		
 		return extent;
+		
 	}
 
 }

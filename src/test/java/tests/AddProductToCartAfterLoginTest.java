@@ -14,7 +14,7 @@ import pages.LoginPage;
 import pages.ShoppingCartPage;
 import utils.RetryAnalyzer;
 
-public class AddProductToCartTest extends BaseTest {
+public class AddProductToCartAfterLoginTest extends BaseTest {
 	
 	IndexPage indexPage;
 	HeaderPage headerPage;
@@ -23,7 +23,7 @@ public class AddProductToCartTest extends BaseTest {
 	BooksPage booksPage;
 	ShoppingCartPage shoppingCartPage;
 	
-	public AddProductToCartTest() {
+	public AddProductToCartAfterLoginTest() {
 		
 		super();
 	}
@@ -47,7 +47,7 @@ public class AddProductToCartTest extends BaseTest {
 		shoppingCartPage.clearShoppingCart();
 	}
 	
-	@Test(description = "Add one valid product with id 13 to cart", retryAnalyzer = RetryAnalyzer.class)
+	@Test(description = "Add one valid product with id 13 to cart after login", retryAnalyzer = RetryAnalyzer.class)
 	public void addOneProductToCart_ValidProduct() {
 		
 		log.info("Verify match books url");

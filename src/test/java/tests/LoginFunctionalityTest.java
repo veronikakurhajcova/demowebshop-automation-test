@@ -37,7 +37,7 @@ public class LoginFunctionalityTest extends BaseTest {
 	}
 
 	@Test(description = "Valid user login with correct data", retryAnalyzer = RetryAnalyzer.class)
-	public void testValidLogin() {
+	public void loginWithValidCredentialsShouldSucceed() {
 
 		log.info("Starting valid user login test");
 		headerPage.clickLoginLink();

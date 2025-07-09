@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -94,13 +93,9 @@ public class RegisterValidTest extends BaseTest {
 		    } catch (Exception e) {
 		        log.warn("Logout was not possible. Detail: " + e.getMessage());
 		    }
-	}
-	
-	@AfterTest
-	public void tearDown() {
-		
-		log.info("Closing the browser after test completion.");
-		quitDriver();
+		 
+		 log.info("Closing the browser after test completion.");
+		 quitDriver();
 	}
 
 }

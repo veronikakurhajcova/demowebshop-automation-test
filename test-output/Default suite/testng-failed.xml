@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.ShoppingE2EFlowTest">
+      <class name="tests.EndToEndShoppingFlowAfterLoginTest">
         <methods>
-          <include name="testBillingInformation"/>
+          <include name="verifyPaymentInformationAfterLogin"/>
           <include name="setup"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- tests.ShoppingE2EFlowTest -->
+      </class> <!-- tests.EndToEndShoppingFlowAfterLoginTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

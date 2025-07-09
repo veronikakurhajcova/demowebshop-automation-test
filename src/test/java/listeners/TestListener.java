@@ -36,6 +36,7 @@ public class TestListener implements ITestListener {
 
 	@Override
 	public void onTestFailure(ITestResult result) {
+		
 		test.get().log(Status.FAIL, result.getThrowable());
 		
 		WebDriver driver = BaseTest.getDriver();
