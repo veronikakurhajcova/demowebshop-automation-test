@@ -1,4 +1,4 @@
-package tests;
+package tests.positiveTests;
 
 import java.io.IOException;
 

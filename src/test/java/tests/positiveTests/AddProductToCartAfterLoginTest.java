@@ -1,4 +1,4 @@
-package tests;
+package tests.positiveTests;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -43,7 +43,7 @@ public class AddProductToCartAfterLoginTest extends BaseTest {
 		shoppingCartPage = new ShoppingCartPage();
 		
 		headerPage.clickLoginLink();
-		loginPage.loginRegisteredUser(testDataReader.getProperty("valid.email"), testDataReader.getProperty("valid.password"));
+		loginPage.loginUser(testDataReader.getProperty("valid.email"), testDataReader.getProperty("valid.password"));
 		headerPage.clickOnShoppingCartLink();
 		shoppingCartPage.clearShoppingCart();
 	}
@@ -69,6 +69,7 @@ public class AddProductToCartAfterLoginTest extends BaseTest {
 	public void tearDown() {
 
 		 TestFlowHelper.logout(dashboardPage, indexPage, configReader);
+		 
 		 log.info("Closing the browser after test completion.");
 		 quitDriver();
 		

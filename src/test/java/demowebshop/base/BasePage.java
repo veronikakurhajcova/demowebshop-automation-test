@@ -88,5 +88,8 @@ public class BasePage extends BaseTest {
 		
 		((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 	}
+	
+
+
 
 }

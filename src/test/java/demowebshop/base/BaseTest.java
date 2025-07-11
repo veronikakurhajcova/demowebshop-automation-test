@@ -26,6 +26,7 @@ public class BaseTest {
 
 	
 	 public BaseTest() {
+		 
 	        try {
 	            configReader = new PropertiesReader("src/test/resources/config/config.properties");
 	            testDataReader = new PropertiesReader("src/test/resources/testdata/validUser.properties");
@@ -40,11 +41,13 @@ public class BaseTest {
 	    }
 
 	public static WebDriver getDriver() {
+		
 		return driver.get();
 	}
 
 	// Initialize the WebDriver instance
 	public WebDriver initializeBrowser() {
+		
 		String browser = configReader.getProperty("browser");
 		String url = configReader.getProperty("url");
 		
@@ -54,6 +57,7 @@ public class BaseTest {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--disable-search-engine-choice-screen");
 			options.addArguments("start-maximized");
+			options.addArguments("--headless");
 			driver.set(new ChromeDriver(options));
 		} 
 		else if (browser.equalsIgnoreCase("firefox")) {
@@ -81,6 +85,7 @@ public class BaseTest {
 	}
 
 	public static void quitDriver() {
+		
 	    WebDriver wdr = driver.get();
 	    if (wdr != null) {
 	        wdr.quit();

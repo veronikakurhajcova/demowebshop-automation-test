@@ -1,285 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="22" passed="22" failed="0" skipped="0">
+<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-09T10:59:03 SELČ" name="Suite" finished-at="2025-07-09T11:03:17 SELČ" duration-ms="253939">
+  <suite started-at="2025-07-11T11:09:43 SELČ" name="Default suite" finished-at="2025-07-11T11:13:02 SELČ" duration-ms="198329">
     <groups>
     </groups>
-    <test started-at="2025-07-09T10:59:03 SELČ" name="Test" finished-at="2025-07-09T11:03:17 SELČ" duration-ms="253939">
-      <class name="tests.RegisterValidTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.RegisterValidTest@260e86a1]" started-at="2025-07-09T11:03:12 SELČ" name="setup" finished-at="2025-07-09T11:03:14 SELČ" duration-ms="1605" status="PASS">
+    <test started-at="2025-07-11T11:09:43 SELČ" name="Default test" finished-at="2025-07-11T11:13:02 SELČ" duration-ms="198329">
+      <class name="tests.negativeTests.RegisterInvalidTests">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.negativeTests.RegisterInvalidTests@56113384]" started-at="2025-07-11T11:09:43 SELČ" name="setup" finished-at="2025-07-11T11:09:46 SELČ" duration-ms="2800" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testValidRegistration()[pri:0, instance:tests.RegisterValidTest@260e86a1]" started-at="2025-07-09T11:03:14 SELČ" name="testValidRegistration" description="Valid user registration with correct data" finished-at="2025-07-09T11:03:16 SELČ" duration-ms="1972" status="PASS">
+        <test-method signature="registerWithEmptyConfirmPasswordField()[pri:0, instance:tests.negativeTests.RegisterInvalidTests@56113384]" started-at="2025-07-11T11:09:46 SELČ" name="registerWithEmptyConfirmPasswordField" description="Registration with empty confirmpassword field" finished-at="2025-07-11T11:10:18 SELČ" duration-ms="31306" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testValidRegistration -->
-        <test-method is-config="true" signature="logout()[pri:0, instance:tests.RegisterValidTest@260e86a1]" started-at="2025-07-09T11:03:16 SELČ" name="logout" finished-at="2025-07-09T11:03:17 SELČ" duration-ms="693" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- logout -->
-      </class> <!-- tests.RegisterValidTest -->
-      <class name="tests.EndToEndShoppingFlowAfterLoginTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:00:47 SELČ" name="setup" finished-at="2025-07-09T11:00:52 SELČ" duration-ms="4943" status="PASS">
+        </test-method> <!-- registerWithEmptyConfirmPasswordField -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.negativeTests.RegisterInvalidTests@56113384]" started-at="2025-07-11T11:10:18 SELČ" name="setup" finished-at="2025-07-11T11:10:20 SELČ" duration-ms="2152" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="checkConfirmOrderDetailsAfterLogin()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:00:52 SELČ" name="checkConfirmOrderDetailsAfterLogin" description="Confirm order details" finished-at="2025-07-09T11:01:08 SELČ" duration-ms="16175" status="PASS">
+        <test-method signature="registerWithEmptyCredentials()[pri:0, instance:tests.negativeTests.RegisterInvalidTests@56113384]" started-at="2025-07-11T11:10:20 SELČ" name="registerWithEmptyCredentials" description="Test with empty credentials" finished-at="2025-07-11T11:10:20 SELČ" duration-ms="346" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- checkConfirmOrderDetailsAfterLogin -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:01:08 SELČ" name="tearDown" finished-at="2025-07-09T11:01:08 SELČ" duration-ms="120" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:01:08 SELČ" name="setup" finished-at="2025-07-09T11:01:33 SELČ" duration-ms="24440" status="PASS">
+        </test-method> <!-- registerWithEmptyCredentials -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.negativeTests.RegisterInvalidTests@56113384]" started-at="2025-07-11T11:10:20 SELČ" name="setup" finished-at="2025-07-11T11:10:22 SELČ" duration-ms="2100" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="selectPaymentMethodAfterLogin()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:01:33 SELČ" name="selectPaymentMethodAfterLogin" description="Payment method selection" finished-at="2025-07-09T11:01:37 SELČ" duration-ms="4312" status="PASS">
+        <test-method signature="registerWithEmptyEmailField()[pri:0, instance:tests.negativeTests.RegisterInvalidTests@56113384]" started-at="2025-07-11T11:10:22 SELČ" name="registerWithEmptyEmailField" description="Registration with empty email field" finished-at="2025-07-11T11:11:03 SELČ" duration-ms="40719" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- selectPaymentMethodAfterLogin -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:01:37 SELČ" name="tearDown" finished-at="2025-07-09T11:01:37 SELČ" duration-ms="131" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:01:37 SELČ" name="setup" finished-at="2025-07-09T11:01:42 SELČ" duration-ms="5114" status="PASS">
+        </test-method> <!-- registerWithEmptyEmailField -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.negativeTests.RegisterInvalidTests@56113384]" started-at="2025-07-11T11:11:03 SELČ" name="setup" finished-at="2025-07-11T11:11:05 SELČ" duration-ms="2159" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="selectShippingMethodAfterLogin()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:01:42 SELČ" name="selectShippingMethodAfterLogin" description="Shipping method selection" finished-at="2025-07-09T11:01:46 SELČ" duration-ms="3571" status="PASS">
+        <test-method signature="registerWithEmptyFirstNameField()[pri:0, instance:tests.negativeTests.RegisterInvalidTests@56113384]" started-at="2025-07-11T11:11:05 SELČ" name="registerWithEmptyFirstNameField" description="Registration with empty firstname field" finished-at="2025-07-11T11:11:46 SELČ" duration-ms="40820" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- selectShippingMethodAfterLogin -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:01:46 SELČ" name="tearDown" finished-at="2025-07-09T11:01:46 SELČ" duration-ms="117" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:01:46 SELČ" name="setup" finished-at="2025-07-09T11:01:51 SELČ" duration-ms="4998" status="PASS">
+        </test-method> <!-- registerWithEmptyFirstNameField -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.negativeTests.RegisterInvalidTests@56113384]" started-at="2025-07-11T11:11:46 SELČ" name="setup" finished-at="2025-07-11T11:11:48 SELČ" duration-ms="2126" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="shouldDisplayCorrectProductDetailsAfterLogin()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:01:51 SELČ" name="shouldDisplayCorrectProductDetailsAfterLogin" description="Check shopping cart details after login" finished-at="2025-07-09T11:01:52 SELČ" duration-ms="478" status="PASS">
+        <test-method signature="registerWithEmptyLastNameField()[pri:0, instance:tests.negativeTests.RegisterInvalidTests@56113384]" started-at="2025-07-11T11:11:48 SELČ" name="registerWithEmptyLastNameField" description="Registration with empty lastname field" finished-at="2025-07-11T11:12:29 SELČ" duration-ms="40792" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- shouldDisplayCorrectProductDetailsAfterLogin -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:01:52 SELČ" name="tearDown" finished-at="2025-07-09T11:01:52 SELČ" duration-ms="122" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:01:52 SELČ" name="setup" finished-at="2025-07-09T11:01:57 SELČ" duration-ms="5043" status="PASS">
+        </test-method> <!-- registerWithEmptyLastNameField -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.negativeTests.RegisterInvalidTests@56113384]" started-at="2025-07-11T11:12:29 SELČ" name="setup" finished-at="2025-07-11T11:12:31 SELČ" duration-ms="2193" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="shouldEstimateShippingAndDisplayCorrectTotalsAfterLogin()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:01:57 SELČ" name="shouldEstimateShippingAndDisplayCorrectTotalsAfterLogin" description="Estimate shipping and check totals after login" finished-at="2025-07-09T11:01:58 SELČ" duration-ms="1737" status="PASS">
+        <test-method signature="registerWithEmptyPasswordField()[pri:0, instance:tests.negativeTests.RegisterInvalidTests@56113384]" started-at="2025-07-11T11:12:31 SELČ" name="registerWithEmptyPasswordField" description="Registration with empty password field" finished-at="2025-07-11T11:13:02 SELČ" duration-ms="30775" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- shouldEstimateShippingAndDisplayCorrectTotalsAfterLogin -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:01:58 SELČ" name="tearDown" finished-at="2025-07-09T11:01:59 SELČ" duration-ms="123" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:01:59 SELČ" name="setup" finished-at="2025-07-09T11:02:04 SELČ" duration-ms="5140" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="shouldVerifyPrefilledBillingFieldsAfterLogin()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:02:04 SELČ" name="shouldVerifyPrefilledBillingFieldsAfterLogin" description="Billing information" finished-at="2025-07-09T11:02:06 SELČ" duration-ms="2473" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- shouldVerifyPrefilledBillingFieldsAfterLogin -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:02:06 SELČ" name="tearDown" finished-at="2025-07-09T11:02:06 SELČ" duration-ms="130" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:02:06 SELČ" name="setup" finished-at="2025-07-09T11:02:11 SELČ" duration-ms="5007" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="testSubmitOrderAndCheckoutUrl()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:02:11 SELČ" name="testSubmitOrderAndCheckoutUrl" description="Submit order and check checkout URL" finished-at="2025-07-09T11:02:13 SELČ" duration-ms="1665" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testSubmitOrderAndCheckoutUrl -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:02:13 SELČ" name="tearDown" finished-at="2025-07-09T11:02:13 SELČ" duration-ms="110" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:02:13 SELČ" name="setup" finished-at="2025-07-09T11:02:18 SELČ" duration-ms="5142" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyOrderCompletionAfterLogin()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:02:18 SELČ" name="verifyOrderCompletionAfterLogin" description="Order completion" finished-at="2025-07-09T11:02:34 SELČ" duration-ms="16048" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyOrderCompletionAfterLogin -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:02:34 SELČ" name="tearDown" finished-at="2025-07-09T11:02:34 SELČ" duration-ms="126" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:02:34 SELČ" name="setup" finished-at="2025-07-09T11:02:59 SELČ" duration-ms="24662" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyPaymentInformationAfterLogin()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:02:59 SELČ" name="verifyPaymentInformationAfterLogin" description="Payment information verification" finished-at="2025-07-09T11:03:04 SELČ" duration-ms="4994" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyPaymentInformationAfterLogin -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:03:04 SELČ" name="tearDown" finished-at="2025-07-09T11:03:04 SELČ" duration-ms="129" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:03:04 SELČ" name="setup" finished-at="2025-07-09T11:03:09 SELČ" duration-ms="5058" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyPrefilledShippingInformationAfterLogin()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:03:09 SELČ" name="verifyPrefilledShippingInformationAfterLogin" description="Shipping information" finished-at="2025-07-09T11:03:12 SELČ" duration-ms="2912" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyPrefilledShippingInformationAfterLogin -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndShoppingFlowAfterLoginTest@43b6123e]" started-at="2025-07-09T11:03:12 SELČ" name="tearDown" finished-at="2025-07-09T11:03:12 SELČ" duration-ms="98" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- tests.EndToEndShoppingFlowAfterLoginTest -->
-      <class name="tests.AddProductToCartAfterLoginTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.AddProductToCartAfterLoginTest@4aa83f4f]" started-at="2025-07-09T11:00:42 SELČ" name="setup" finished-at="2025-07-09T11:00:46 SELČ" duration-ms="3839" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="addOneProductToCart_ValidProduct()[pri:0, instance:tests.AddProductToCartAfterLoginTest@4aa83f4f]" started-at="2025-07-09T11:00:46 SELČ" name="addOneProductToCart_ValidProduct" description="Add one valid product with id 13 to cart after login" finished-at="2025-07-09T11:00:47 SELČ" duration-ms="1137" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- addOneProductToCart_ValidProduct -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.AddProductToCartAfterLoginTest@4aa83f4f]" started-at="2025-07-09T11:00:47 SELČ" name="tearDown" finished-at="2025-07-09T11:00:47 SELČ" duration-ms="116" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- tests.AddProductToCartAfterLoginTest -->
-      <class name="tests.LoginValidTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.LoginValidTest@4fce136b]" started-at="2025-07-09T11:00:38 SELČ" name="setup" finished-at="2025-07-09T11:00:40 SELČ" duration-ms="1659" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="loginWithValidCredentialsShouldSucceed()[pri:0, instance:tests.LoginValidTest@4fce136b]" started-at="2025-07-09T11:00:40 SELČ" name="loginWithValidCredentialsShouldSucceed" description="Valid user login with correct data" finished-at="2025-07-09T11:00:41 SELČ" duration-ms="1248" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- loginWithValidCredentialsShouldSucceed -->
-        <test-method is-config="true" signature="logoutLoggedUser()[pri:0, instance:tests.LoginValidTest@4fce136b]" started-at="2025-07-09T11:00:41 SELČ" name="logoutLoggedUser" finished-at="2025-07-09T11:00:42 SELČ" duration-ms="730" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- logoutLoggedUser -->
-      </class> <!-- tests.LoginValidTest -->
-      <class name="tests.EndToEndShoppingFlowAfterRegistrationTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T10:59:03 SELČ" name="setup" finished-at="2025-07-09T10:59:08 SELČ" duration-ms="5562" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="checkConfirmOrderDetailsAfterRegistration()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T10:59:08 SELČ" name="checkConfirmOrderDetailsAfterRegistration" description="Confirm order details content" finished-at="2025-07-09T10:59:15 SELČ" duration-ms="6353" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- checkConfirmOrderDetailsAfterRegistration -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T10:59:15 SELČ" name="tearDown" finished-at="2025-07-09T10:59:15 SELČ" duration-ms="155" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T10:59:15 SELČ" name="setup" finished-at="2025-07-09T10:59:20 SELČ" duration-ms="5043" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="selectPaymentMethodAfterRegistration()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T10:59:20 SELČ" name="selectPaymentMethodAfterRegistration" description="Payment method selection after user registration" finished-at="2025-07-09T10:59:25 SELČ" duration-ms="4806" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- selectPaymentMethodAfterRegistration -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T10:59:25 SELČ" name="tearDown" finished-at="2025-07-09T10:59:25 SELČ" duration-ms="123" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T10:59:25 SELČ" name="setup" finished-at="2025-07-09T10:59:30 SELČ" duration-ms="5748" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="selectShippingMethodAfterRegistration()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T10:59:30 SELČ" name="selectShippingMethodAfterRegistration" description="User selects shipping method" finished-at="2025-07-09T10:59:35 SELČ" duration-ms="4702" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- selectShippingMethodAfterRegistration -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T10:59:35 SELČ" name="tearDown" finished-at="2025-07-09T10:59:35 SELČ" duration-ms="131" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T10:59:35 SELČ" name="setup" finished-at="2025-07-09T10:59:40 SELČ" duration-ms="4953" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="shouldDisplayCorrectProductDetailsAfterRegistration()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T10:59:40 SELČ" name="shouldDisplayCorrectProductDetailsAfterRegistration" description="Check shopping cart details after user registration" finished-at="2025-07-09T10:59:41 SELČ" duration-ms="514" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- shouldDisplayCorrectProductDetailsAfterRegistration -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T10:59:41 SELČ" name="tearDown" finished-at="2025-07-09T10:59:41 SELČ" duration-ms="117" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T10:59:41 SELČ" name="setup" finished-at="2025-07-09T10:59:46 SELČ" duration-ms="4776" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="shouldEstimateShippingAndDisplayCorrectTotalsAfterRegistration()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T10:59:46 SELČ" name="shouldEstimateShippingAndDisplayCorrectTotalsAfterRegistration" description="Estimate shipping and check totals after user registration" finished-at="2025-07-09T10:59:48 SELČ" duration-ms="2701" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- shouldEstimateShippingAndDisplayCorrectTotalsAfterRegistration -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T10:59:48 SELČ" name="tearDown" finished-at="2025-07-09T10:59:48 SELČ" duration-ms="108" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T10:59:48 SELČ" name="setup" finished-at="2025-07-09T10:59:53 SELČ" duration-ms="4774" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="shouldVerifyPrefilledBillingFieldsAndEnterRemainingInformationAfterRegistration()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T10:59:53 SELČ" name="shouldVerifyPrefilledBillingFieldsAndEnterRemainingInformationAfterRegistration" description="Billing information after user registration" finished-at="2025-07-09T10:59:57 SELČ" duration-ms="3648" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- shouldVerifyPrefilledBillingFieldsAndEnterRemainingInformationAfterRegistration -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T10:59:57 SELČ" name="tearDown" finished-at="2025-07-09T10:59:57 SELČ" duration-ms="153" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T10:59:57 SELČ" name="setup" finished-at="2025-07-09T11:00:02 SELČ" duration-ms="5003" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyOrderCompletionAfterRegistration()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T11:00:02 SELČ" name="verifyOrderCompletionAfterRegistration" description="Order completion after user registration" finished-at="2025-07-09T11:00:19 SELČ" duration-ms="16500" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyOrderCompletionAfterRegistration -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T11:00:19 SELČ" name="tearDown" finished-at="2025-07-09T11:00:19 SELČ" duration-ms="151" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T11:00:19 SELČ" name="setup" finished-at="2025-07-09T11:00:23 SELČ" duration-ms="4740" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyPaymentInformationAfterRegistration()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T11:00:23 SELČ" name="verifyPaymentInformationAfterRegistration" description="Verify payment info content" finished-at="2025-07-09T11:00:28 SELČ" duration-ms="5051" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyPaymentInformationAfterRegistration -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T11:00:28 SELČ" name="tearDown" finished-at="2025-07-09T11:00:29 SELČ" duration-ms="113" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T11:00:29 SELČ" name="setup" finished-at="2025-07-09T11:00:33 SELČ" duration-ms="4712" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyPrefilledShippingInformationAfterRegistration()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T11:00:33 SELČ" name="verifyPrefilledShippingInformationAfterRegistration" description="Shipping information after user registration" finished-at="2025-07-09T11:00:37 SELČ" duration-ms="3464" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyPrefilledShippingInformationAfterRegistration -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.EndToEndShoppingFlowAfterRegistrationTest@6b3e12b5]" started-at="2025-07-09T11:00:37 SELČ" name="tearDown" finished-at="2025-07-09T11:00:38 SELČ" duration-ms="1650" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- tests.EndToEndShoppingFlowAfterRegistrationTest -->
-    </test> <!-- Test -->
-  </suite> <!-- Suite -->
+        </test-method> <!-- registerWithEmptyPasswordField -->
+      </class> <!-- tests.negativeTests.RegisterInvalidTests -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

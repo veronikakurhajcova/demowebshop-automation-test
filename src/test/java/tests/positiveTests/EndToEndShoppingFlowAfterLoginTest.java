@@ -1,4 +1,4 @@
-package tests;
+package tests.positiveTests;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;

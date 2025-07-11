@@ -1,4 +1,4 @@
-package tests;
+package tests.positiveTests;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -13,14 +13,14 @@ import pages.IndexPage;
 import pages.LoginPage;
 import utils.RetryAnalyzer;
 
-public class LoginValidTest extends BaseTest {
+public class LoginPositiveTest extends BaseTest {
 
 	IndexPage indexPage;
 	HeaderPage headerPage;
 	LoginPage loginPage;
 	DashboardPage dashboardPage;
 
-	public LoginValidTest() {
+	public LoginPositiveTest() {
 
 		super();
 
@@ -30,6 +30,7 @@ public class LoginValidTest extends BaseTest {
 	public void setup() {
 
 		initializeBrowser();
+		
 		indexPage = new IndexPage();
 		headerPage = new HeaderPage();
 		dashboardPage = new DashboardPage();
@@ -44,7 +45,7 @@ public class LoginValidTest extends BaseTest {
 		headerPage.clickLoginLink();
 
 		log.info("Filling login form with valid data");
-		loginPage.loginRegisteredUser(testDataReader.getProperty("valid.email"),
+		loginPage.loginUser(testDataReader.getProperty("valid.email"),
 				testDataReader.getProperty("valid.password"));
 
 		Assert.assertEquals(dashboardPage.getCurrentUrl(), configReader.getProperty("url"),

@@ -34,13 +34,14 @@ public class TestFlowHelper {
 		headerPage.clickRegisterLink();
 		registerPage.registerUser(testDataReader.getProperty("valid.firstname"),
 				testDataReader.getProperty("valid.lastname"), randomEmail,
-				testDataReader.getProperty("valid.password"));
+				testDataReader.getProperty("valid.password"),testDataReader.getProperty("valid.confirmpassword") );
 		registerPage.clickContinue();
 
 		dashboardPage.clickOnBooksLink();
 		booksPage.addBookWithId13ToCart();
 		booksPage.verifySuccessBarNotificationAfterAddProductToCart(
 				messageReader.getProperty("cart.add.success.bar.notification"));
+		
 	}
 
 	// Register user shopping flow
@@ -54,6 +55,7 @@ public class TestFlowHelper {
 		cart.clickTermsOfService();
 		
 		cart.submitOrder();
+		
 	}
 
 	public static void fillBillingInformation(CheckoutPage checkout, PropertiesReader cartReader) {
@@ -65,25 +67,33 @@ public class TestFlowHelper {
 		checkout.enterBillingPhoneNumber(cartReader.getProperty("valid.billing.phonenumber"));
 		
 		checkout.clickBillingContinueButton();
+		
 	}
 
 	public static void proceedToShippingMethod(ShippingPage shippingPage) {
+		
 		shippingPage.clickContinue();
+		
 	}
 
 	public static void proceedToPaymentMethod(ShippingMethodPage shippingMethodPage) {
 		
+		
 		shippingMethodPage.clickContinue();
+		
 	}
 
 	public static void proceedToPaymentInformation(PaymentMethodPage paymentMethodPage) {
 		
+		
 		paymentMethodPage.clickContinue();
+		
 	}
 
 	public static void proceedToConfirmOrder(PaymentInformationPage paymentInformationPage) {
 		
 		paymentInformationPage.clickContinue();
+		
 	}
 
 	// Login user shopping flow
@@ -92,13 +102,14 @@ public class TestFlowHelper {
 			BooksPage booksPage, PropertiesReader cartReader, PropertiesReader messageReader) {
 		
 		headerPage.clickLoginLink();
-		loginPage.loginRegisteredUser(cartReader.getProperty("valid.email"), cartReader.getProperty("valid.password"));
+		loginPage.loginUser(cartReader.getProperty("valid.email"), cartReader.getProperty("valid.password"));
 		headerPage.clickOnShoppingCartLink();
 		shoppingCartPage.clearShoppingCart();
 		dashboardPage.clickOnBooksLink();
 		booksPage.addBookWithId13ToCart();
 		booksPage.verifySuccessBarNotificationAfterAddProductToCart(
 				messageReader.getProperty("cart.add.success.bar.notification"));
+		
 	}
 	
 	public static void verifyAndUsePrefilledBillingInformation(CheckoutPage checkoutPage, PropertiesReader cartReader) {
@@ -106,32 +117,41 @@ public class TestFlowHelper {
         String billingAddressText = checkoutPage.getSelectedBillingAddressText();
         Assert.assertTrue(billingAddressText.contains(cartReader.getProperty("valid.lastname")), "Billing address mismatch");
         checkoutPage.clickBillingContinueButton();
+        
     }
 	
 	 public static void verifyAndUsePrefilledShippingInformation(ShippingPage shippingPage, PropertiesReader cartReader) {
-	        String shippingAddressText = shippingPage.getSelectedShippingAddressText();
+	       
+		 String shippingAddressText = shippingPage.getSelectedShippingAddressText();
 	        Assert.assertTrue(shippingAddressText.contains(cartReader.getProperty("valid.lastname")), "Shipping address mismatch");
 	        shippingPage.clickContinue();
+	        
 	    }
 
 	    public static void selectShippingMethodAndContinue(ShippingMethodPage shippingMethodPage) {
-	        shippingMethodPage.waitForShippingMethodSection();
+	       
+	    	shippingMethodPage.waitForShippingMethodSection();
 	        Assert.assertTrue(shippingMethodPage.isShippingMethodDisplayed(), "Shipping method not displayed");
 	        shippingMethodPage.selectGroundShippingMethod();
 	        Assert.assertTrue(shippingMethodPage.isGroundShippingMethodSelected(), "Ground shipping method not selected");
 	        shippingMethodPage.clickContinue();
+	        
 	    }
 
 	    public static void selectPaymentMethodAndContinue(PaymentMethodPage paymentMethodPage) {
-	        paymentMethodPage.selectCashOnDeliveryPaymentMethod();
+	       
+	    	paymentMethodPage.selectCashOnDeliveryPaymentMethod();
 	        Assert.assertTrue(paymentMethodPage.isCasOnDeliveryPaymentMethodSelected(), "COD payment method not selected");
 	        paymentMethodPage.clickContinue();
+	        
 	    }
 
 	    public static void verifyPaymentInformationAndContinue(PaymentInformationPage paymentInformationPage, PropertiesReader messageReader) {
-	        Assert.assertTrue(paymentInformationPage.isPaymentInfoDisplayed(), "Payment info not displayed");
+	        
+	    	Assert.assertTrue(paymentInformationPage.isPaymentInfoDisplayed(), "Payment info not displayed");
 	        Assert.assertEquals(paymentInformationPage.getPaymentInfoText(), messageReader.getProperty("payment.information.cod"));
 	        paymentInformationPage.clickContinue();
+	        
 	    }
 	    
 	    public static void logout(DashboardPage dashboardPage, IndexPage indexPage, PropertiesReader configReader) {

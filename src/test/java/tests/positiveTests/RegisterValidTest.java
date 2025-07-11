@@ -1,4 +1,4 @@
-package tests;
+package tests.positiveTests;
 
 import java.io.IOException;
 
@@ -46,6 +46,7 @@ public class RegisterValidTest extends BaseTest {
 		
 		log.info("Initializing browser and navigating to the URL.");
 		initializeBrowser();
+		
 		headerPage = new HeaderPage();
 		indexPage = new IndexPage();
 		registerPage = new RegisterPage();
@@ -63,7 +64,7 @@ public class RegisterValidTest extends BaseTest {
 		log.info("Filling in registration form with valid data.");
 		registerPage.registerUser(testDataReader.getProperty("valid.firstname"),
 				testDataReader.getProperty("valid.lastname"), randomEmail,
-				testDataReader.getProperty("valid.password"));
+				testDataReader.getProperty("valid.password"),testDataReader.getProperty("valid.confirmpassword"));
 
 		log.info("Verifying registration result message and URL.");
 		String actualMessage = registerPage.getResultMessage();
