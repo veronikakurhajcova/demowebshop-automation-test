@@ -72,4 +72,3 @@ Or execute with Maven: mvn clean test
 ### Personal Note
 This project represents my understanding of real-world test automation structure. I built it from scratch, made mistakes, debugged through failures (yes, even misidentified bugs 😄), and learned a lot. It’s far from final – I’ll keep improving it as I grow.
 
-If you’re reviewing this as part of my portfolio – welcome! I’m happy to show what I know and I’m even more excited about what’s next.
