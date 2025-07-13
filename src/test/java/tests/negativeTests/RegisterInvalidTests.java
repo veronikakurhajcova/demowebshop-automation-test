@@ -179,27 +179,27 @@ public class RegisterInvalidTests extends BaseTest {
 	@Test(description = "Registration with empty confirmpassword field", retryAnalyzer = RetryAnalyzer.class)
 	public void registerWithEmptyConfirmPasswordField() {
 
-		registerPage.registerUser(testDataReader.getProperty("valid.firstname"),
-				testDataReader.getProperty("valid.lastname"), randomEmail, testDataReader.getProperty("valid.password"),
-				"");
+	    registerPage.registerUser(testDataReader.getProperty("valid.firstname"),
+	            testDataReader.getProperty("valid.lastname"), randomEmail, testDataReader.getProperty("valid.password"),
+	            "");
 
-		 Assert.assertFalse(registerPage.isErrorMessageDisplayed(registerPage.confirmPasswordRequiredMessage),
-		            "Confirm password warning message is not displayed");
-		    Assert.assertEquals(registerPage.getConfirmPasswordWarningMessageText(),
-		            messageReader.getProperty("register.confirmpassword.required"),
-		            "Confirm password warning message in registration does not match");
+	    Assert.assertTrue(registerPage.isErrorMessageDisplayed(registerPage.confirmPasswordRequiredMessage),
+	            "Confirm password warning message is not displayed");
+	    Assert.assertEquals(registerPage.getConfirmPasswordWarningMessageText(),
+	            messageReader.getProperty("register.confirmpassword.required"),
+	            "Confirm password warning message in registration does not match");
 
+	    Assert.assertFalse(registerPage.isErrorMessageDisplayed(registerPage.firstNameIsRequiredMessage),
+	            "Firstname warning should not be displayed");
+	    Assert.assertFalse(registerPage.isErrorMessageDisplayed(registerPage.lastNameIsRequiredMessage),
+	            "Lastname warning should not be displayed");
+	    Assert.assertFalse(registerPage.isErrorMessageDisplayed(registerPage.emailRequiredMessage),
+	            "Email warning should not be displayed");
 
-		    Assert.assertFalse(registerPage.isErrorMessageDisplayed(registerPage.firstNameIsRequiredMessage),
-		            "Firstname warning should not be displayed");
-		    Assert.assertFalse(registerPage.isErrorMessageDisplayed(registerPage.lastNameIsRequiredMessage),
-		    		"Lastname warning should not be displayed");
-		    Assert.assertFalse(registerPage.isErrorMessageDisplayed(registerPage.emailRequiredMessage),
-		            "Email warning should not be displayed");
-		    
-		    log.info("Confirm password warning not checked because password is missing.");
+	    log.info("Confirm password warning correctly checked for empty confirm password field.");
 
 	}
+
 
     
 
