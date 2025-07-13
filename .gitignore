@@ -1,10 +1,15 @@
 demowebshop-automation/
 /target/
+build/
 .settings/
 .project
 .classpath
+test-output/
+.DS_Store
+Thumbs.db
 .idea/
 *.iml
 .vscode/
 *.log
 *.tmp
+*.class
