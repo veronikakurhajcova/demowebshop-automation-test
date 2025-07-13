@@ -44,6 +44,7 @@ public class RegisterInvalidTests extends BaseTest {
 
 		registerPage.clickRegisterButton();
 
+		log.info("Send registration with emtpy data");
 		Assert.assertTrue(registerPage.isFirstNameRequiredWarningMessageDisplayed(),
 				"Firstname warning message is not displayed");
 		Assert.assertEquals(registerPage.getFirstNameWarningMessageText(),
@@ -182,6 +183,12 @@ public class RegisterInvalidTests extends BaseTest {
 				testDataReader.getProperty("valid.lastname"), randomEmail, testDataReader.getProperty("valid.password"),
 				"");
 
+		 Assert.assertFalse(registerPage.isErrorMessageDisplayed(registerPage.confirmPasswordRequiredMessage),
+		            "Confirm password warning message is not displayed");
+		    Assert.assertEquals(registerPage.getConfirmPasswordWarningMessageText(),
+		            messageReader.getProperty("register.confirmpassword.required"),
+		            "Confirm password warning message in registration does not match");
+
 
 		    Assert.assertFalse(registerPage.isErrorMessageDisplayed(registerPage.firstNameIsRequiredMessage),
 		            "Firstname warning should not be displayed");
@@ -193,5 +200,7 @@ public class RegisterInvalidTests extends BaseTest {
 		    log.info("Confirm password warning not checked because password is missing.");
 
 	}
+
+    
 
 }

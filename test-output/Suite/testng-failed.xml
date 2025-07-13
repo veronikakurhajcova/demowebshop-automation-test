@@ -3,13 +3,12 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="tests.RegisterValidTest">
+      <class name="tests.negativeTests.RegisterInvalidTests">
         <methods>
-          <include name="logout"/>
-          <include name="testValidRegistration"/>
           <include name="setup"/>
+          <include name="registerWithEmptyConfirmPasswordField"/>
         </methods>
-      </class> <!-- tests.RegisterValidTest -->
+      </class> <!-- tests.negativeTests.RegisterInvalidTests -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
