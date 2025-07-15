@@ -198,7 +198,7 @@ public class EndToEndShoppingFlowAfterLoginTest extends BaseTest {
 		TestFlowHelper.selectShippingMethodAndContinue(shippingMethodPage);
 
 		paymentMethodPage.selectCashOnDeliveryPaymentMethod();
-		Assert.assertTrue(paymentMethodPage.isCasOnDeliveryPaymentMethodSelected(), "COD payment method not selected");
+		Assert.assertTrue(paymentMethodPage.isCashOnDeliveryPaymentMethodSelected(), "COD payment method not selected");
 
 		paymentMethodPage.clickContinue();
 

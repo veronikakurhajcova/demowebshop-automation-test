@@ -2,176 +2,134 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 import demowebshop.base.BasePage;
 
 public class CheckoutPage extends BasePage {
-	
-	public CheckoutPage() {
-		super();
-	}
-	
-	// Elements
-	@FindBy(id="BillingNewAddress_FirstName")
-	private WebElement firstNameInBillingAddress;
-	
-	@FindBy(id="BillingNewAddress_LastName")
-	private WebElement lastNameInBillingAddress;
-	
-	@FindBy(id="BillingNewAddress_Email")
-	private WebElement emailInBillingAddress;
-	
-	@FindBy(id="BillingNewAddress_CountryId")
-	private WebElement countryInBillingAddress;
-	
-	@FindBy(id="BillingNewAddress_City")
-	private WebElement cityInBillingAddress;
-	
-	@FindBy(id="BillingNewAddress_Address1")
-	private WebElement addressInBillingAddress;
-	
-	@FindBy(id="BillingNewAddress_ZipPostalCode")
-	private WebElement zipPostalCodeBillingAddress;
-	
-	@FindBy(id="BillingNewAddress_PhoneNumber")
-	private WebElement phoneNumberInBillingAddress;
-	
-	@FindBy(id = "billing-address-select")
-	private WebElement prefilledBillingAddressSelect;
-	
-	@FindBy(xpath="//input[@type='button'][@title='Continue']")
-	private WebElement continueButtonInBillingAddress;
 
-	//Actions
-	public String getBillingFirstName() {
-		
-	    return firstNameInBillingAddress.getAttribute("value");
-	    
-	}
-	
-	public String getBillingLastName() {
-		
-		return lastNameInBillingAddress.getAttribute("value");
-		
-	}
-	
-	public String getBillingEmail() {
-		
-		return emailInBillingAddress.getAttribute("value");
-		
-	}
-	
-	public void waitForBillingAddressSection() {
-		
-	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("BillingNewAddress_FirstName")));
-	    
-	}
-	
-	public void selectBillingCountry(String countryName) {
-		
-		waitForBillingAddressSection(); 
-	    wait.until(ExpectedConditions.visibilityOf(countryInBillingAddress));
-	    Select select = new Select(countryInBillingAddress);
-	    select.selectByVisibleText(countryName);
-	    
-	}
-	
-	public void enterBillingCity(String city) {
-		
-		waitForElementToBeClickable(cityInBillingAddress);
-		sendKeys(cityInBillingAddress, city);
-		
-	}
-	
-	public void enterBillingAddress1(String address) {
-		
-		sendKeys(addressInBillingAddress, address);
-		
-	}
-	
-	public void enterBillingZipPostalCode(String postalZipCode) {
-		
-		waitForElementToBeClickable(zipPostalCodeBillingAddress);
-		sendKeys(zipPostalCodeBillingAddress, postalZipCode);
-		
-	}
-	
-	public void enterBillingPhoneNumber(String phoneNumber) {
-		
-		waitForElementToBeClickable(phoneNumberInBillingAddress);
-		sendKeys(phoneNumberInBillingAddress, phoneNumber);
-		
-	}
-	
-	public void clickBillingContinueButton() {
-		
-		waitForElementToBeClickable(continueButtonInBillingAddress);
-	    click(continueButtonInBillingAddress);
-	    wait.until(ExpectedConditions.invisibilityOf(continueButtonInBillingAddress));
-	    
-	}
-	
-	public String getSelectedBillingCountry() {
-		
-	    Select select = new Select(countryInBillingAddress);
-	    return select.getFirstSelectedOption().getText();
-	    
-	}
+    // Locators
+    private final By firstNameBy = By.id("BillingNewAddress_FirstName");
+    private final By lastNameBy = By.id("BillingNewAddress_LastName");
+    private final By emailBy = By.id("BillingNewAddress_Email");
+    private final By countryBy = By.id("BillingNewAddress_CountryId");
+    private final By cityBy = By.id("BillingNewAddress_City");
+    private final By address1By = By.id("BillingNewAddress_Address1");
+    private final By zipPostalCodeBy = By.id("BillingNewAddress_ZipPostalCode");
+    private final By phoneNumberBy = By.id("BillingNewAddress_PhoneNumber");
+    private final By prefilledBillingAddressSelectBy = By.id("billing-address-select");
+    private final By continueButtonBy = By.xpath("//input[@type='button'][@title='Continue']");
 
-	public String getBillingCity() {
-		
-	    return cityInBillingAddress.getAttribute("value");
-	}
+    public CheckoutPage() {
+        super();
+    }
 
-	public String getBillingAddress1() {
-		
-	    return addressInBillingAddress.getAttribute("value");
-	}
+    // Actions
 
-	public String getBillingZipPostalCode() {
-		
-	    return zipPostalCodeBillingAddress.getAttribute("value");
-	}
+    public String getBillingFirstName() {
+        WebElement firstName = waitForElementToBeVisible(firstNameBy);
+        return firstName.getAttribute("value");
+    }
 
-	public String getBillingPhoneNumber() {
-		
-	    return phoneNumberInBillingAddress.getAttribute("value");
-	}
-	
-	public void selectPrefilledBillingAddress() {
-		
-		Select select = new Select(prefilledBillingAddressSelect);
-		select.selectByIndex(0);
-		
-	}
-	
-	public String getSelectedBillingAddressText() {
-		
-	    Select select = new Select(prefilledBillingAddressSelect);
-	    return select.getFirstSelectedOption().getText().trim();
-	}
+    public String getBillingLastName() {
+        WebElement lastName = waitForElementToBeVisible(lastNameBy);
+        return lastName.getAttribute("value");
+    }
 
-	public boolean isSelectedBillingAddressContaining(String expectedPartialText) {
-		
-	    Select select = new Select(prefilledBillingAddressSelect);
-	    String selectedText = select.getFirstSelectedOption().getText();
-	    return selectedText.contains(expectedPartialText);
-	
-	}
-	
-	public void waitForContinueButton() {
-		
-	    wait.until(ExpectedConditions.elementToBeClickable(continueButtonInBillingAddress));
-	
-	}
-	
+    public String getBillingEmail() {
+        WebElement email = waitForElementToBeVisible(emailBy);
+        return email.getAttribute("value");
+    }
 
-	public boolean isBillingCountrySelectDisplayed() {
-		
-		return countryInBillingAddress.isDisplayed();
-	}
+    public void waitForBillingAddressSection() {
+        waitForElementToBeVisible(firstNameBy);
+    }
 
+    public void selectBillingCountry(String countryName) {
+        waitForBillingAddressSection();
+        WebElement country = waitForElementToBeVisible(countryBy);
+        Select select = new Select(country);
+        select.selectByVisibleText(countryName);
+    }
+
+    public void enterBillingCity(String city) {
+        WebElement cityElem = waitForElementToBeClickable(cityBy);
+        sendKeys(cityElem, city);
+    }
+
+    public void enterBillingAddress1(String address) {
+        WebElement addressElem = waitForElementToBeClickable(address1By);
+        sendKeys(addressElem, address);
+    }
+
+    public void enterBillingZipPostalCode(String postalZipCode) {
+        WebElement zipElem = waitForElementToBeClickable(zipPostalCodeBy);
+        sendKeys(zipElem, postalZipCode);
+    }
+
+    public void enterBillingPhoneNumber(String phoneNumber) {
+        WebElement phoneElem = waitForElementToBeClickable(phoneNumberBy);
+        sendKeys(phoneElem, phoneNumber);
+    }
+
+    public void clickBillingContinueButton() {
+        WebElement continueButton = waitForElementToBeClickable(continueButtonBy);
+        click(continueButton);
+        wait.until(ExpectedConditions.invisibilityOf(continueButton));
+    }
+
+    public String getSelectedBillingCountry() {
+        WebElement country = waitForElementToBeVisible(countryBy);
+        Select select = new Select(country);
+        return select.getFirstSelectedOption().getText();
+    }
+
+    public String getBillingCity() {
+        WebElement cityElem = waitForElementToBeVisible(cityBy);
+        return cityElem.getAttribute("value");
+    }
+
+    public String getBillingAddress1() {
+        WebElement addressElem = waitForElementToBeVisible(address1By);
+        return addressElem.getAttribute("value");
+    }
+
+    public String getBillingZipPostalCode() {
+        WebElement zipElem = waitForElementToBeVisible(zipPostalCodeBy);
+        return zipElem.getAttribute("value");
+    }
+
+    public String getBillingPhoneNumber() {
+        WebElement phoneElem = waitForElementToBeVisible(phoneNumberBy);
+        return phoneElem.getAttribute("value");
+    }
+
+    public void selectPrefilledBillingAddress() {
+        WebElement selectElem = waitForElementToBeVisible(prefilledBillingAddressSelectBy);
+        Select select = new Select(selectElem);
+        select.selectByIndex(0);
+    }
+
+    public String getSelectedBillingAddressText() {
+        WebElement selectElem = waitForElementToBeVisible(prefilledBillingAddressSelectBy);
+        Select select = new Select(selectElem);
+        return select.getFirstSelectedOption().getText().trim();
+    }
+
+    public boolean isSelectedBillingAddressContaining(String expectedPartialText) {
+        WebElement selectElem = waitForElementToBeVisible(prefilledBillingAddressSelectBy);
+        Select select = new Select(selectElem);
+        String selectedText = select.getFirstSelectedOption().getText();
+        return selectedText.contains(expectedPartialText);
+    }
+
+    public void waitForContinueButton() {
+        waitForElementToBeClickable(continueButtonBy);
+    }
+
+    public boolean isBillingCountrySelectDisplayed() {
+        WebElement country = waitForElementToBeVisible(countryBy);
+        return country.isDisplayed();
+    }
 }

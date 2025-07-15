@@ -2,66 +2,53 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import demowebshop.base.BasePage;
 
 public class ConfirmOrderPage extends BasePage {
-	
-	 public ConfirmOrderPage() {
-	        super();
-	    }
 
-	    // Elements
+    // Locators
+    private final By confirmOrderSectionBy = By.id("checkout-step-confirm-order");
+    private final By confirmOrderContentBy = By.id("checkout-confirm-order-load");
+    private final By billingInfoBoxBy = By.cssSelector(".billing-info");
+    private final By shippingInfoBoxBy = By.cssSelector(".shipping-info");
+    private final By confirmButtonBy = By.xpath("//input[contains(@class,'confirm-order-next-step-button')]");
+    private final By orderSuccessMessageBy = By.cssSelector("div.section.order-completed div.title strong");
 
-	    @FindBy(id = "checkout-step-confirm-order")
-	    private WebElement confirmOrderSection;
+    // Constructor
+    public ConfirmOrderPage() {
+        super();
+    }
 
-	    @FindBy(id = "checkout-confirm-order-load")
-	    private WebElement confirmOrderContent;
+    // Actions
+    public void waitForConfirmOrderSection() {
+        waitForElementToBeVisible(confirmOrderSectionBy);
+        waitForElementToBeVisible(confirmOrderContentBy);
+    }
 
-	    @FindBy(css = ".billing-info")
-	    private WebElement billingInfoBox;
+    public String getBillingInfoText() {
+        WebElement billingInfoBox = waitForElementToBeVisible(billingInfoBoxBy);
+        return billingInfoBox.getText();
+    }
 
-	    @FindBy(css = ".shipping-info")
-	    private WebElement shippingInfoBox;
-	    
-	    @FindBy(xpath = "//input[contains(@class,'confirm-order-next-step-button')]")
-	    private WebElement confirmButton;
+    public String getShippingInfoText() {
+        WebElement shippingInfoBox = waitForElementToBeVisible(shippingInfoBoxBy);
+        return shippingInfoBox.getText();
+    }
 
-	    // Actions
+    public boolean isConfirmButtonDisplayed() {
+        WebElement confirmButton = waitForElementToBeVisible(confirmButtonBy);
+        return confirmButton.isDisplayed();
+    }
 
-	    public void waitForConfirmOrderSection() {
-	        wait.until(ExpectedConditions.visibilityOf(confirmOrderSection));
-	        wait.until(ExpectedConditions.visibilityOf(confirmOrderContent));
-	    }
-	    
-	    public String getBillingInfoText() {
-	        wait.until(ExpectedConditions.visibilityOf(billingInfoBox));
-	        return billingInfoBox.getText();
-	    }
+    public void clickConfirm() {
+        WebElement confirmButton = waitForElementToBeClickable(confirmButtonBy);
+        click(confirmButton);  // BasePage click s JS fallbackom
+        wait.until(org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOf(confirmButton));
+    }
 
-	    public String getShippingInfoText() {
-	        wait.until(ExpectedConditions.visibilityOf(shippingInfoBox));
-	        return shippingInfoBox.getText();
-	    }
-
-	    public boolean isConfirmButtonDisplayed() {
-	        return confirmButton.isDisplayed();
-	    }
-
-	    public void clickConfirm() {
-	        wait.until(ExpectedConditions.elementToBeClickable(confirmButton));
-	        confirmButton.click();
-	        wait.until(ExpectedConditions.invisibilityOf(confirmButton));
-	    }
-	    
-	    public String getOrderSuccessMessage() {
-	        WebElement successMessage = wait
-	            .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.section.order-completed div.title strong")));
-	        return successMessage.getText();
-	    }
-
-
+    public String getOrderSuccessMessage() {
+        WebElement successMessage = waitForElementToBeVisible(orderSuccessMessageBy);
+        return successMessage.getText();
+    }
 }

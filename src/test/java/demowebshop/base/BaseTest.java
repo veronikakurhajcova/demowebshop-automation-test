@@ -16,7 +16,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 
-	private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+	protected static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     protected static final Logger log = LogManager.getLogger(BaseTest.class);
     protected PropertiesReader configReader;
     protected PropertiesReader testDataReader;

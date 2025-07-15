@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-	<listeners>
-		<listener class-name="listeners.TestListener"></listener>
-	</listeners>
+  <listeners>
+    <listener class-name="listeners.TestListener"></listener>
+  </listeners>
   <test name="Test">
     <classes>
       <class name="tests.positiveTests.RegisterValidTest"/>
@@ -14,5 +14,5 @@
       <class name="tests.positiveTests.EndToEndShoppingFlowAfterRegistrationTest"/>
       <class name="tests.positiveTests.EndToEndShoppingFlowAfterLoginTest"/>
     </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+  </test>
+</suite>

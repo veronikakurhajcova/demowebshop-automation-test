@@ -13,83 +13,68 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage extends BaseTest {
-	protected WebDriver driver;
-	protected WebDriverWait wait;
+    protected WebDriver driver;
+    protected WebDriverWait wait;
 
-	// Initialize common actions for all pages
-	public BasePage() {
-		
-		this.driver = BaseTest.getDriver();
-		PageFactory.initElements(driver, this);
-		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public BasePage() {
+        this.driver = BaseTest.getDriver();
+        PageFactory.initElements(driver, this);
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    }
 
-	}
+    public void navigateTo(String url) {
+        driver.get(url);
+    }
 
-	// Actions
-	public void navigateTo(String url) {
-		
-		driver.get(url);
-	}
+    public String getPageTitle() {
+        return driver.getTitle();
+    }
 
-	public String getPageTitle() {
-		
-		return driver.getTitle();
-	}
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
 
-	public String getCurrentUrl() {
-		
-		return driver.getCurrentUrl();
-	}
+    public void click(WebElement element) {
+        try {
+            waitForElementToBeClickable(element).click();
+        } catch (ElementClickInterceptedException e) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+        }
+    }
 
-	public void click(WebElement element) {
-		
-	    try {
-	        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
-	    } catch (ElementClickInterceptedException e) {
-	        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-	    }
-	}
+    public void sendKeys(WebElement element, String text) {
+        waitForElementToBeVisible(element);
+        waitForElementToBeClickable(element);
+        element.clear();
+        element.sendKeys(text);
+    }
 
-	public void sendKeys(WebElement element, String text) {
-		
-		wait.until(ExpectedConditions.visibilityOf(element));
-		wait.until(ExpectedConditions.elementToBeClickable(element));
-		element.clear();
-		element.sendKeys(text);
-	}
+    public WebElement waitForElementToBeVisible(By locator) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
 
-	public void waitForElementToBeVisible(WebElement element) {
-		
-		wait.until(ExpectedConditions.visibilityOf(element));
-	}
-	
-	public void waitForElementToBeVisibleByLocator(By locator) {
-		
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-	    wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-	}
+    public WebElement waitForElementToBeClickable(By locator) {
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
 
-	public boolean isElementPresent(WebElement element) {
-		
-	    try {
-	        wait.until(ExpectedConditions.visibilityOf(element));
-	        return true; 
-	    } catch (TimeoutException e) {
-	        return false; 
-	    }
-	}
+    public WebElement waitForElementToBeVisible(WebElement element) {
+        return wait.until(ExpectedConditions.visibilityOf(element));
+    }
 
-	public void waitForElementToBeClickable(WebElement element) {
-		
-		wait.until(ExpectedConditions.elementToBeClickable(element));
-	}
+    public WebElement waitForElementToBeClickable(WebElement element) {
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
 
-	public void scrollToElement(WebElement element) {
-		
-		((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-	}
-	
+    public boolean isElementPresent(By removeProductFromCartCheckboxBy) {
+        try {
+            waitForElementToBeVisible(removeProductFromCartCheckboxBy);
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
 
-
-
+    public void scrollToElement(WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
 }

@@ -1,69 +1,57 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import demowebshop.base.BasePage;
 
 public class ShippingMethodPage extends BasePage {
-	
-	public ShippingMethodPage() {
-		
-		super();
-		
-	}
-	
-	// Elements
 
-    @FindBy(xpath = "//input[@type='button' and contains(@class,'shipping-method-next-step-button')]")
-    private WebElement continueButton;
+    // Locators
+    private final By continueButtonBy = By.xpath("//input[@type='button' and contains(@class,'shipping-method-next-step-button')]");
+    private final By shippingMethodSectionBy = By.id("checkout-step-shipping-method");
+    private final By shippingMethodContentBy = By.id("checkout-shipping-method-load");
+    private final By shippingMethodGroundBy = By.id("shippingoption_0");
 
-    @FindBy(id = "checkout-step-shipping-method")
-    private WebElement shippingMethodSection;
-
-    @FindBy(id = "checkout-shipping-method-load")
-    private WebElement shippingMethodContent;
-    
-    @FindBy(id="shippingoption_0")
-    private WebElement shippingMethodGround;
+    public ShippingMethodPage() {
+        super();
+    }
 
     // Actions
 
     public void waitForShippingMethodSection() {
-    	
-        wait.until(ExpectedConditions.visibilityOf(shippingMethodSection));
-        wait.until(ExpectedConditions.visibilityOf(shippingMethodContent));
+        waitForElementToBeVisible(shippingMethodSectionBy);
+        waitForElementToBeVisible(shippingMethodContentBy);
     }
 
     public boolean isShippingMethodDisplayed() {
-    	
         waitForShippingMethodSection();
-        return shippingMethodContent.isDisplayed() && !shippingMethodContent.getText().isEmpty();
-    }
- 
-    
-    public void selectGroundShippingMethod() {
-    	
-    	 if (!shippingMethodGround.isSelected()) {
-    	        shippingMethodGround.click();
-    	        wait.until(ExpectedConditions.elementToBeSelected(shippingMethodGround));
-    	    }
-    }
-    
-    public boolean isGroundShippingMethodSelected() {
-    	
-    	return shippingMethodGround.isSelected();
+        WebElement content = waitForElementToBeVisible(shippingMethodContentBy);
+        return content.isDisplayed() && !content.getText().isEmpty();
     }
 
+    public void selectGroundShippingMethod() {
+        WebElement groundOption = waitForElementToBeClickable(shippingMethodGroundBy);
+        if (!groundOption.isSelected()) {
+            groundOption.click();
+            wait.until(driver -> groundOption.isSelected());
+        }
+    }
+
+    public boolean isGroundShippingMethodSelected() {
+        WebElement groundOption = waitForElementToBeVisible(shippingMethodGroundBy);
+        return groundOption.isSelected();
+    }
 
     public void clickContinue() {
-    	
-        wait.until(ExpectedConditions.elementToBeClickable(continueButton));
-        continueButton.click();
-        wait.until(ExpectedConditions.invisibilityOf(continueButton));
+        WebElement continueBtn = waitForElementToBeClickable(continueButtonBy);
+        click(continueBtn);
+        wait.until(driver -> {
+            try {
+                return !continueBtn.isDisplayed();
+            } catch (Exception e) {
+                return true; // if element disappears, considered invisible
+            }
+        });
     }
-	
-	
-
 }

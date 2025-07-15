@@ -141,7 +141,7 @@ public class TestFlowHelper {
 	    public static void selectPaymentMethodAndContinue(PaymentMethodPage paymentMethodPage) {
 	       
 	    	paymentMethodPage.selectCashOnDeliveryPaymentMethod();
-	        Assert.assertTrue(paymentMethodPage.isCasOnDeliveryPaymentMethodSelected(), "COD payment method not selected");
+	        Assert.assertTrue(paymentMethodPage.isCashOnDeliveryPaymentMethodSelected(), "COD payment method not selected");
 	        paymentMethodPage.clickContinue();
 	        
 	    }

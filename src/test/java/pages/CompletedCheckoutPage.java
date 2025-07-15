@@ -1,79 +1,60 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 import demowebshop.base.BasePage;
 
 public class CompletedCheckoutPage extends BasePage {
 
-	public CompletedCheckoutPage() {
 
-		super();
+    // Locators
+    private final By orderSuccessMessageBy = By.cssSelector(".section.order-completed>.title>strong");
+    private final By sectionOrderCompletedOrderNumberTextBy = By.cssSelector(".section.order-completed>.details>li");
+    private final By sectionOrderCompletedDetailsLinkBy = By.cssSelector(".section.order-completed>.details>li>a");
+    private final By sectionOrderCompletedContinueButtonBy = By.cssSelector(".buttons>.order-completed-continue-button");
 
-	}
+    // Constructor
+    public CompletedCheckoutPage() {
+    	super();
+    }
+    
+    // Actions
 
-	// Elements
+    public boolean isOrderSuccessMessageDisplayed() {
+        WebElement orderSuccessMessage = waitForElementToBeVisible(orderSuccessMessageBy);
+        return orderSuccessMessage.isDisplayed();
+    }
 
-	@FindBy(css = ".section.order-completed>.title>strong")
-	private WebElement orderSuccessMessage;
+    public String getSectionOrderCompletedTitleText() {
+        WebElement orderSuccessMessage = waitForElementToBeVisible(orderSuccessMessageBy);
+        return orderSuccessMessage.getText();
+    }
 
-	@FindBy(css = ".section.order-completed>.details>li")
-	private WebElement sectionOrderCompletedOrderNumberText;
+    public boolean isSectionOrderCompletedOrderNumberTextDisplayed() {
+        WebElement orderNumberText = waitForElementToBeVisible(sectionOrderCompletedOrderNumberTextBy);
+        return orderNumberText.isDisplayed();
+    }
 
-	@FindBy(css = ".section.order-completed>.details>li>a")
-	private WebElement sectionOrderCompletedDetailsLink;
+    public boolean isSectionOrderCompletedDetailsLinkDisplayed() {
+        WebElement detailsLink = waitForElementToBeVisible(sectionOrderCompletedDetailsLinkBy);
+        return detailsLink.isDisplayed();
+    }
 
-	@FindBy(css = ".buttons>.order-completed-continue-button")
-	private WebElement sectionOrderCompletedContinueButton;
+    public void clickContinue() {
+        WebElement continueButton = waitForElementToBeClickable(sectionOrderCompletedContinueButtonBy);
+        continueButton.click();
+    }
 
-	// Actions
-
-	public boolean isOrderSuccessMessageDisplayed() {
-
-		waitForElementToBeVisible(orderSuccessMessage);
-		return orderSuccessMessage.isDisplayed();
-
-	}
-
-	public String getSectionOrderCompletedTitleText() {
-
-		return orderSuccessMessage.getText();
-	}
-
-	public boolean isSectionOrderCompletedOrderNumberTextDisplayed() {
-
-		waitForElementToBeVisible(sectionOrderCompletedOrderNumberText);
-		return sectionOrderCompletedOrderNumberText.isDisplayed();
-
-	}
-	
-	public boolean isSectionOrderCompletedDetailsLinkDisplayed() {
-		
-		waitForElementToBeVisible(sectionOrderCompletedDetailsLink);
-		return sectionOrderCompletedDetailsLink.isDisplayed();
-		
-	}
-	
-	public void clickContinue() {
-		
-		waitForElementToBeClickable(sectionOrderCompletedContinueButton);
-		click(sectionOrderCompletedContinueButton);
-		
-	}
-	
-	public String extractOrderNumber() {
-		
-	    waitForElementToBeVisible(sectionOrderCompletedOrderNumberText);
-	    String fullText = sectionOrderCompletedOrderNumberText.getText().trim();
-	    java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("\\d+");
-	    java.util.regex.Matcher matcher = pattern.matcher(fullText);
-	    if (matcher.find()) {
-	        return matcher.group();
-	    } else {
-	        return "";
-	    }
-	}
-
-
+    public String extractOrderNumber() {
+        WebElement orderNumberText = waitForElementToBeVisible(sectionOrderCompletedOrderNumberTextBy);
+        String fullText = orderNumberText.getText().trim();
+        java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("\\d+");
+        java.util.regex.Matcher matcher = pattern.matcher(fullText);
+        if (matcher.find()) {
+            return matcher.group();
+        } else {
+            return "";
+        }
+    }
 }

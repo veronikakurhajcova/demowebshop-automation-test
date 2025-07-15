@@ -1,61 +1,44 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
-
 import demowebshop.base.BasePage;
 
 public class BooksPage extends BasePage {
 
-	public BooksPage() {
 
-		super();
-	}
+    // Locators
+    private final By addToCartButtonForProduct13By = By.xpath("//div[@data-productid='13']//input[@value='Add to cart']");
+    private final By successBarNotificationBy = By.id("bar-notification");
 
-	// Elements
-	@FindBy(xpath = "//div[@data-productid='13']//input[@value='Add to cart']")
-	private WebElement addToCartButtonForProduct13;
+    // Constructor
+    public BooksPage() {
+    	super();
+    }
+    
+    // Actions
+    public boolean isOnBooksPage() {
+        String currentUrl = getCurrentUrl();
+        return currentUrl.contains("/books");
+    }
 
-	@FindBy(id = "bar-notification")
-	private WebElement successBarNotification;
+    public void verifyOnBooksPage() {
+        Assert.assertTrue(isOnBooksPage(), "Url does not match book url");
+    }
 
+    public void addBookWithId13ToCart() {
+        WebElement addToCartBtn = waitForElementToBeClickable(addToCartButtonForProduct13By);
+        addToCartBtn.click();
+    }
 
-	// Actions
-	public boolean isOnBooksPage() {
+    public String getSuccessBarNotificationAfterAddProductToCartText() {
+        WebElement successBar = waitForElementToBeVisible(successBarNotificationBy);
+        return successBar.getText().trim();
+    }
 
-		String currentUrl = getCurrentUrl();
-		return currentUrl.contains("/books");
-		
-	}
-
-	public void verifyOnBooksPage() {
-
-		Assert.assertTrue(isOnBooksPage(), "Url does not match book url");
-		
-	}
-
-	public void addBookWithId13ToCart() {
-
-		waitForElementToBeClickable(addToCartButtonForProduct13);
-		click(addToCartButtonForProduct13);
-		
-	}
-
-	public String getSuccessBarNotificationAfterAddProductToCartText() {
-		
-		return successBarNotification.getText().trim();
-	}
-	
-	public void verifySuccessBarNotificationAfterAddProductToCart(String expectedMessage) {
-		
-	    waitForElementToBeVisible(successBarNotification);
-	    String actualMessage = getSuccessBarNotificationAfterAddProductToCartText();
-	    Assert.assertTrue(actualMessage.contains(expectedMessage), "Text of success notification bar does not match!");
-	    
-	}
-	
-	
-
-
+    public void verifySuccessBarNotificationAfterAddProductToCart(String expectedMessage) {
+        String actualMessage = getSuccessBarNotificationAfterAddProductToCartText();
+        Assert.assertTrue(actualMessage.contains(expectedMessage), "Text of success notification bar does not match!");
+    }
 }
