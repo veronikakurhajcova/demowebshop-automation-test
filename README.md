@@ -1,74 +1,42 @@
 # DemoWebShop Automation Testing Project
 This is a personal test automation project built to demonstrate my skills in testing a sample e-commerce application – Demo Web Shop. The project covers both positive and negative test cases using a modular, scalable, and maintainable structure.
 
-## Tools & Technologies Used
-Java
+## 🔍 Features
 
-Selenium WebDriver
+- Positive & negative E2E tests (e.g., registration, purchase)
+- Retry mechanism for flaky test recovery
+- Clean architecture using Page Object Model
+- Field validation tests (e.g., empty fields, invalid inputs)
+- Rich reporting with ExtentReports
+- Easy to maintain and extend for new test cases
+- Base classes, helper methods, utilities for reusability
 
-TestNG
+## 🛠 Technologies Used
 
-Maven
+- Java 23
+- Selenium WebDriver
+- TestNG
+- Maven
+- Log4j
+- ExtentReports
+- Apache POI (for Excel test data)
+- Custom RetryAnalyzer
+- Page Object Model
+- Custom utilities and BaseTest
 
-ExtentReports
+## 🚀 How to Run Tests
 
-Page Object Model (POM)
+1. Clone this repository:
+   
+   git clone https://github.com/veronikakurhajcova/demowebshop-automation-test.git
+   
+2.Open the project in your IDE (IntelliJ or Eclipse recommended)
+3.Make sure Java 17+ and Maven are installed
+4.Run tests via:
+  testng.xml file in your IDE
+  or using Maven from terminal:
+  mvn clean test
 
-Log4j
-
-DataProvider
-
-RetryAnalyzer
-
-Custom Utils
-
-External properties files (for messages and test data)
-
-## What’s Tested?
-### Positive Test Scenarios
-Successful registration
-
-Login with valid credentials
-
-Add product to cart after login
-
-Full shopping flow after registration
-
-Full shopping flow after login
-
-### Negative Test Scenarios
-Registration with missing fields (first name, last name, email, password, confirm password)
-
-Login with invalid or empty credentials
-
-## Project Structure
-base/ – base test and page classes, browser setup
-
-pages/ – Page Object Model classes
-
-tests/ – test scenarios (split into positive/negative packages)
-
-utils/ – common helpers (e.g., email generator, retry logic)
-
-helpers/ – additional logic (e.g., logout flow)
-
-resources/ – config and test data .properties files
-
-## Reporting
-Integrated with ExtentReports
-
-Detailed logs and test statuses
-
-Future plans to integrate Allure for advanced visual reporting
-
-## How to Run the Tests
-Open the project in your IDE
-
-Make sure chromedriver is configured in your system PATH
-
-Use testng.xml to run the full test suite
-
-Or execute with Maven: mvn clean test
 ### Personal Note
-This project represents my understanding of real-world test automation structure. I built it from scratch, made mistakes, debugged through failures (yes, even misidentified bugs 😄), and learned a lot. It’s far from final – I’ll keep improving it as I grow.
+This project represents my understanding of real-world test automation structure. It’s far from final – I’ll keep improving it as I grow.
 
